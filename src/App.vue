@@ -1,12 +1,33 @@
 <template>
   <div id="app">
+
+    <UserSearchBar />
+
+
     <div id="nav">
       <router-link to="/">Vue générale</router-link> |
       <router-link to="/about">Mon profil</router-link>
     </div>
     <router-view/>
+
   </div>
 </template>
+
+<script>
+import UserSearchBar from './components/UserSearchBar'
+
+export default {
+
+  name: 'App',
+  components: {
+    UserSearchBar
+  }
+}
+
+
+</script>
+
+
 
 <style lang="scss">
 #app {
