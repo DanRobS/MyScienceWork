@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VueGenerale from '../views/VueGenerale.vue'
-import Profil from '../views/Profil.vue'
-import Publications from '../views/Publications.vue'
+import VueGenerale from '../views/Tabs/VueGenerale.vue'
+import Profil from '../views/Tabs/Profil.vue'
+import Publications from '../views/Tabs/Publications.vue'
 
 Vue.use(VueRouter)
 

@@ -9,7 +9,7 @@
 export default {
   name: 'Profil',
   components: {
-
+    
   }
 }
 </script>

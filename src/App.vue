@@ -3,51 +3,38 @@
 
     <UserSearchBar />
 
-
-    <div id="nav">
-      <router-link to="/">Vue générale</router-link> |
-      <router-link to="/about">Mon profil</router-link>
+    <div id="user-infos">
+      <Avatar />
+      <TabsUtilisateur />
     </div>
-    <router-view/>
+
 
   </div>
 </template>
 
 <script>
 import UserSearchBar from './components/UserSearchBar'
+import Avatar from './components/Avatar'
+import TabsUtilisateur from './views/TabsUtilisateur'
 
 export default {
-
   name: 'App',
   components: {
-    UserSearchBar
+    UserSearchBar,
+    Avatar,
+    TabsUtilisateur
   }
 }
-
-
 </script>
 
 
-
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+
+#user-infos {
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  display: flex;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
