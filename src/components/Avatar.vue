@@ -11,25 +11,38 @@
     <p id="name">
       Names
     </p>
-    <h1 class="Titles">About</h1>
+    <p class="Titles">About</p>
       <p id="about-text">
          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
       </p>
 
-    <h1 class="Titles">Social media</h1>
+    <p class="Titles">Social media</p>
 
-    <div class="colums">
-      <div class="column">
-        <font-awesome-icon :icon="['fab', 'facebook-square']" size="2x"/>
+
+    <div class="social-media columns is-mobile">
+      <div class="column ">
+        <a href="https://facebook.com/">
+          <font-awesome-icon :icon="['fab', 'facebook-square']" size="2x"
+          :style="{ color: '#3b5998' }"/>
+        </a>
       </div>
       <div class="column">
-        <font-awesome-icon :icon="['fab', 'linkedin']" size="2x"/>
+        <a href="https://linkedin.com/">
+          <font-awesome-icon :icon="['fab', 'linkedin']" size="2x"
+            :style="{ color: '#0e76a8' }"/>
+        </a>
       </div>
       <div class="column">
-        <font-awesome-icon :icon="['fab', 'twitter']" size="2x"/>
+        <a href="https://twitter.com/">
+          <font-awesome-icon :icon="['fab', 'twitter']" size="2x"
+            :style="{ color: '#00acee' }"/>
+        </a>
       </div>
       <div class="column">
-        <font-awesome-icon :icon="['fab', 'orcid']" size="2x"/>
+        <a href="https://orcid.org/">
+          <font-awesome-icon :icon="['fab', 'orcid']" size="2x"
+            :style="{ color: '#a6ce39' }"/>
+        </a>
       </div>
     </div>
 
@@ -57,7 +70,15 @@ export default {
     font-size: 150%;
     font-style: oblique;
     font-weight: bold;
-    margin-top: 5%;
+    margin-bottom: 1%;
+  }
+
+  .social-media {
+    padding-right: 50%;
+  }
+
+  font-awesome-icon:hover {
+    color: grey;
   }
 
   #Avatar-pic {
@@ -73,6 +94,7 @@ export default {
 
   #about-text {
     text-align: justify;
+    margin-bottom: 3%;
   }
 
 </style>
