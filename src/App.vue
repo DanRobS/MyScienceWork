@@ -1,9 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" class="container is-fluid">
 
     <UserSearchBar />
 
-    <div id="user-infos">
+    <div id="user-infos" class="columns">
       <Avatar />
       <TabsUtilisateur />
     </div>
@@ -31,10 +31,8 @@ export default {
 <style lang="scss">
 
 #user-infos {
-  margin-top: 5%;
-  margin-left: 10%;
-  margin-right: 10%;
-  display: flex;
+  margin-top: 1%;
+  padding: 1%;
 }
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="UserSearchBar">
+  <div class="UserSearchBar column container">
 
     <b-field>
       <b-autocomplete
@@ -13,9 +13,9 @@
         <template slot="empty">No results found</template>
       </b-autocomplete>
     </b-field>
-    <a class="button" id="searchButton">
-      Lancer la rechercher
-    </a>
+    <b-button id="searchButton">
+      Rechercher
+    </b-button>
   </div>
 </template>
 
@@ -23,7 +23,7 @@
 export default {
   name: 'UserSearchBar',
   components: {
-
+    
   }
 }
 </script>
@@ -34,16 +34,12 @@ export default {
 .UserSearchBar {
   //border-style: solid;
   //border-color: red;
-  margin-top: 5%;
-  margin-right: 20%;
-  margin-left: 20%;
-  display: flex;
-  flex-direction: column;
+  margin-top: 2%;
+
 }
 
 #searchButton {
-  margin-left: 40%;
-  margin-right: 40%;
+
 }
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="TabsUtilisateur">
+  <div class="TabsUtilisateur column is-9">
     TabsUtilisateur
   </div>
 </template>
@@ -17,9 +17,7 @@ export default {
 
 .TabsUtilisateur {
   border-style: solid;
-  border-color: blue;
-  flex: 3;
-  margin-left: 1%;
+  border-color: black;
 }
 
 </style>
