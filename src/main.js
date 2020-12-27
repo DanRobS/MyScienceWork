@@ -5,7 +5,7 @@ import store from './store'
 import Buefy from 'buefy';
 import 'buefy/dist/buefy.css';
 import 'bulma/css/bulma.css'
-
+import './icons/icons.js'
 
 Vue.config.productionTip = false
 

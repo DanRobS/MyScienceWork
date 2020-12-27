@@ -23,7 +23,7 @@
 export default {
   name: 'UserSearchBar',
   components: {
-    
+
   }
 }
 </script>

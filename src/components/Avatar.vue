@@ -1,5 +1,5 @@
 <template>
-  <div class="Avatar column">
+  <div class="Avatar container">
     <div id="Avatar-pic">
       <b-image
             src="https://picsum.photos/600/400"
@@ -15,7 +15,24 @@
       <p id="about-text">
          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
       </p>
+
     <h1 class="Titles">Social media</h1>
+
+    <div class="colums">
+      <div class="column">
+        <font-awesome-icon :icon="['fab', 'facebook-square']" size="2x"/>
+      </div>
+      <div class="column">
+        <font-awesome-icon :icon="['fab', 'linkedin']" size="2x"/>
+      </div>
+      <div class="column">
+        <font-awesome-icon :icon="['fab', 'twitter']" size="2x"/>
+      </div>
+      <div class="column">
+        <font-awesome-icon :icon="['fab', 'orcid']" size="2x"/>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -33,6 +50,7 @@ export default {
   .Avatar {
     border-style: solid;
     border-color: black;
+    padding: 1%;
   }
 
   .Titles {
