@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container is-fluid">
 
-    <UserSearchBar />
+    <UserSearchForm />
 
     <div id="user-infos" class="columns">
       <Avatar />
@@ -13,14 +13,14 @@
 </template>
 
 <script>
-import UserSearchBar from './components/UserSearchBar'
+import UserSearchForm from './components/UserSearchForm'
 import Avatar from './components/Avatar'
 import TabsUtilisateur from './views/TabsUtilisateur'
 
 export default {
   name: 'App',
   components: {
-    UserSearchBar,
+    UserSearchForm,
     Avatar,
     TabsUtilisateur
   }
