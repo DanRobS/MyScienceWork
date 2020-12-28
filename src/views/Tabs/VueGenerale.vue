@@ -18,7 +18,7 @@
         <p class="affiliation-country">Etats-Unis</p>
       </li>
     </ul>
-
+    
   </div>
 </template>
 

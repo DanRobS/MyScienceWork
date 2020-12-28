@@ -1,7 +1,6 @@
 <template>
   <div class="UserSearchForm column container has-text-centered">
 
-    
       <b-field>
         <b-autocomplete
           rounded
@@ -19,8 +18,6 @@
         Rechercher
       </b-button>
       
-    
-    
   </div>
 </template>
 
