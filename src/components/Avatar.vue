@@ -23,28 +23,35 @@
     <div class="social-media is-mobile">
       <ul>
         <li class="social-media-link">
-        <a href="https://facebook.com/">
           <font-awesome-icon :icon="['fab', 'facebook-square']" size="2x"
-          :style="{ color: '#3b5998' }"/> Facebook  
-        </a>
+          :style="{ color: '#3b5998' }"/>
+          <a href="https://facebook.com/" class="social-media-anchor">
+            Facebook  
+          </a>
         </li>
+        
         <li class="social-media-link">
-        <a href="https://linkedin.com/">
           <font-awesome-icon :icon="['fab', 'linkedin']" size="2x"
-            :style="{ color: '#0e76a8' }" /> LinkedIn
-        </a>
+          :style="{ color: '#0e76a8' }"/>
+          <a href="https://linkedin.com/" class="social-media-anchor">
+            LinkedIn
+          </a>
         </li>
+        
         <li class="social-media-link">
-        <a href="https://twitter.com/">
           <font-awesome-icon :icon="['fab', 'twitter']" size="2x"
-            :style="{ color: '#00acee' }" /> Twitter
-        </a>
+            :style="{ color: '#00acee' }"/>
+          <a href="https://twitter.com/" class="social-media-anchor">
+            Twitter
+          </a>
         </li>
+        
         <li class="social-media-link">
-        <a href="https://orcid.org/">
           <font-awesome-icon :icon="['fab', 'orcid']" size="2x"
-            :style="{ color: '#a6ce39' }"/> Orcid
-        </a>
+            :style="{ color: '#a6ce39' }"/>
+          <a href="https://orcid.org/" class="social-media-anchor">
+            Orcid
+          </a>
         </li>
       </ul>
     </div>
@@ -97,5 +104,9 @@ export default {
 
   #about-text {
     margin-bottom: 3%;
+  }
+
+  .social-media-anchor {
+    font-size: 130%;
   }
 </style>
