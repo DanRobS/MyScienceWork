@@ -20,33 +20,34 @@
       </p>
 
     <p class="Titles">Social media</p>
-    <div class="social-media columns is-mobile">
-      <div class="column ">
+    <div class="social-media is-mobile">
+      <ul>
+        <li class="social-media-link">
         <a href="https://facebook.com/">
           <font-awesome-icon :icon="['fab', 'facebook-square']" size="2x"
-          :style="{ color: '#3b5998' }"/>
+          :style="{ color: '#3b5998' }"/> Facebook  
         </a>
-      </div>
-      <div class="column">
+        </li>
+        <li class="social-media-link">
         <a href="https://linkedin.com/">
           <font-awesome-icon :icon="['fab', 'linkedin']" size="2x"
-            :style="{ color: '#0e76a8' }" />
+            :style="{ color: '#0e76a8' }" /> LinkedIn
         </a>
-      </div>
-      <div class="column">
+        </li>
+        <li class="social-media-link">
         <a href="https://twitter.com/">
           <font-awesome-icon :icon="['fab', 'twitter']" size="2x"
-            :style="{ color: '#00acee' }" />
+            :style="{ color: '#00acee' }" /> Twitter
         </a>
-      </div>
-      <div class="column">
+        </li>
+        <li class="social-media-link">
         <a href="https://orcid.org/">
           <font-awesome-icon :icon="['fab', 'orcid']" size="2x"
-            :style="{ color: '#a6ce39' }"/>
+            :style="{ color: '#a6ce39' }"/> Orcid
         </a>
-      </div>
+        </li>
+      </ul>
     </div>
-
   </div>
 </template>
 
@@ -78,6 +79,10 @@ export default {
     padding-right: 50%;
   }
 
+  .social-media-link {
+    margin-bottom: 3%;
+  }
+
   #Avatar-pic {
     border-style: solid;
     border-color: black;
@@ -93,5 +98,4 @@ export default {
     text-align: justify;
     margin-bottom: 3%;
   }
-
 </style>
