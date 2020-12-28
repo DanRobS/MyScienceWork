@@ -1,6 +1,6 @@
 <template>
   <div class="General">
-
+    <h1>General</h1>
   </div>
 </template>
 
@@ -14,5 +14,10 @@ export default {
 </script>
 
 <style lang="scss">
+
+  .General {
+    border-style: solid;
+    border-color: black;
+  }
 
 </style>

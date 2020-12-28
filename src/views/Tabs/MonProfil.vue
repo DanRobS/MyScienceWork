@@ -1,15 +1,15 @@
 <template>
-  <div class="profil">
-    <h1>This is an about page</h1>
+  <div class="monProfil">
+    <h1>Mon profil</h1>
   </div>
 </template>
 
 
 <script>
 export default {
-  name: 'Profil',
+  name: 'MonProfil',
   components: {
-    
+
   }
 }
 </script>

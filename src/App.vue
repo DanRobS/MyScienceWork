@@ -2,7 +2,7 @@
   <div id="app" class="container is-fluid">
 
     <UserSearchBar />
-    
+
     <div id="user-infos" class="columns">
       <Avatar />
       <TabsUtilisateur />
