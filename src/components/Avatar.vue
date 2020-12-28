@@ -63,9 +63,10 @@ export default {
 
 <style lang="scss">
   .Avatar {
-    border-style: solid;
-    border-color: black;
-    padding: 1%;
+    //border-style: solid;
+    //border-color: black;
+    padding-left: 1%;
+    padding-right: 1%;
   }
 
   .Titles {
