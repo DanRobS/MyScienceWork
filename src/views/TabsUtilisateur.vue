@@ -1,6 +1,7 @@
 <template>
   <div class="TabsUtilisateur column is-9">
-    <div id="top-tabs" class="tabs is-toggle is-centered is-boxed is-large">
+    <div id="top-tabs" class="tabs is-toggle 
+              is-centered is-boxed is-large">
       <ul>
         <li>
             <router-link to="/vuegenerale">
@@ -25,13 +26,11 @@
 
 <script>
 export default {
-
-
   name: 'TabsUtilisateur',
   components: {
 
   }
-}
+} 
 </script>
 
 <style lang="scss">

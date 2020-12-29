@@ -53,18 +53,17 @@
         <b-field label="Durée" class="">
           <b-datepicker
             placeholder="Date de début"
-            icon="calendar-today"
+            icon="calendar-alt"
             :locale="locale"
             editable>
           </b-datepicker>
           <b-datepicker
             placeholder="Date de fin"
-            icon="calendar-today"
+            icon="calendar-alt"
             :locale="locale"
             editable>
           </b-datepicker>
         </b-field>
-
       </div>
 
       <b-field label="Pays">
@@ -329,10 +328,8 @@
                 <section class="section">
                     <div class="has-text-centered">
                         <p>
-                            <b-icon class=""
-                                icon="upload"
-                                size="is-large">
-                            </b-icon>
+                          <font-awesome-icon :icon="['fas', 'upload']" size="2x"
+                          :style="{ color: '' }"/>
                         </p>
                         <p class="subtitle is-5">Drag and drop avatar here</p>
                     </div>
@@ -370,8 +367,6 @@ export default {
   border-color: black;
   flex-grow: 10;
 }
-
-
 
 #user-social-media {
   margin-bottom: 3%;

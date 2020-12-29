@@ -9,7 +9,10 @@ import './icons/icons.js'
 
 Vue.config.productionTip = false
 
-Vue.use(Buefy);
+Vue.use(Buefy, {
+  defaultIconComponent: 'vue-fontawesome',
+  defaultIconPack: 'fas',
+});
 
 new Vue({
   router,
