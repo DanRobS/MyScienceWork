@@ -19,7 +19,7 @@
     <div id="user-social-media">
       <b-field label="Social media ids">
         <b-input value="" placeholder="URL/username/id"></b-input>
-        <b-select placeholder="Select a subject">
+        <b-select placeholder="">
           <option value="Facebook">Facebook</option>
           <option value="LinkedIn">LinkedIn</option>
           <option value="Twitter">Twitter</option>
@@ -315,20 +315,20 @@
       
     </div>
     
-    <div id="avatar-pic-upload">
-      <b-field >
+    <div>
+      <b-field class="">
             <b-upload v-model="dropFiles"
                 multiple
-                drag-drop>
+                drag-drop class="column">
                 <section class="section">
-                    <div class="content has-text-centered">
+                    <div class="">
                         <p>
-                            <b-icon
+                            <b-icon class=""
                                 icon="upload"
                                 size="is-large">
                             </b-icon>
                         </p>
-                        <p>Déposer avatar ici</p>
+                        <p>Drag and drop avatar here</p>
                     </div>
                 </section>
             </b-upload>
@@ -357,7 +357,13 @@ export default {
   padding-right: 2.5%;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  //justify-content: start;
+}
+
+.upload-div {
+  border-style: solid;
+  border-color: black;
+  flex-grow: 10;
 }
 
 #user-infos-fields {
