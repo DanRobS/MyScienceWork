@@ -19,18 +19,18 @@
     <ul>
       <li class="publication">
         <p class="publication-infos">
-          <span>Hugh Généreux, Frank Martin</span>.
-          <span>2016</span>. 
-          <span>Radioactive
+          <span class="pub-authors">Hugh Généreux, Frank Martin</span>.
+          <span class="pub-date">2016</span>. 
+          <span class="pub-title">Radioactive
           materials and their effects to health</span>.
         </p>
       </li>
 
       <li class="publication">
         <p class="publication-infos">
-          <span>Frank Martin, Selena Smith et al</span>.
-          <span>2015</span>. 
-          <span>La fission nucléaire expliquée par l'exemple</span>.
+          <span class="pub-authors">Hugh Généreux, Frank Martin, Selena Smith et al</span>.
+          <span class="pub-date">2015</span>. 
+          <span class="pub-title">La fission nucléaire expliquée par l'exemple</span>.
         </p>
       </li>
     </ul>
@@ -65,5 +65,37 @@ export default {
   display: flex;
   justify-content: center;
   margin-bottom: 5%;
+}
+
+.pub-authors {
+  font-style: italic;
+
+}
+
+.pub-date {
+  font-style: italic;
+}
+
+.pub-title {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+
+  .publication {
+    margin-bottom: 5%;
+  }
+
+  .pub-authors {
+    font-size: 80%;
+  }
+
+  .pub-date {
+    font-size: 80%;
+  }
+
+  .pub-title {
+    font-size: 80%;
+  }
 }
 </style>

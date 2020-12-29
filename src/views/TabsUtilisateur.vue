@@ -1,6 +1,6 @@
 <template>
   <div class="TabsUtilisateur column is-9">
-    <div class="tabs is-toggle is-centered is-boxed is-large">
+    <div id="top-tabs" class="tabs is-toggle is-centered is-boxed is-large">
       <ul>
         <li>
             <router-link to="/vuegenerale">
@@ -39,6 +39,16 @@ export default {
 .TabsUtilisateur {
   border-style: solid;
   border-color: black;
+}
+
+#top-tabs {
+  
+}
+
+@media (max-width: 768px) {
+  #top-tabs {
+        
+  }
 }
 
 </style>

@@ -51,6 +51,7 @@ export default {
 
   .affiliation-role {
     font-size: 140%;
+    font-style: italic;
     margin-bottom: 0.5%;
   }
 
@@ -67,4 +68,29 @@ export default {
     font-size: 115%;
   }
 
+@media (max-width: 768px) {
+  .affiliation-name {
+    font-size: 150%;
+    font-weight: bold;
+  }
+
+  .affiliation-role {
+    font-size: 100%;
+    font-style: italic;
+    margin-bottom: 0.5%;
+  }
+
+  .affiliation-team {
+    font-size: 80%;
+  }
+
+  .affiliation-date {
+    font-size: 80%;
+  }
+
+  .affiliation-country {
+    font-style: italic;
+    font-size: 80%;
+  }
+}
 </style>

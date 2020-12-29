@@ -363,7 +363,6 @@ export default {
   padding-right: 2.5%;
   display: flex;
   flex-direction: column;
-  //justify-content: start;
 }
 
 .upload-div {
@@ -372,11 +371,7 @@ export default {
   flex-grow: 10;
 }
 
-#user-infos-fields {
-  //border-style: solid;
-  //border-color: black;
-  //margin-right: 65%;
-}
+
 
 #user-social-media {
   margin-bottom: 3%;
@@ -399,5 +394,16 @@ export default {
   justify-content: center;
   padding-top: 1%;
   padding-bottom: 1%;
+}
+
+@media (min-width: 1000px) {
+  #user-infos-fields {
+    margin-right: 65%;
+  }
+
+  #user-affiliation {
+    margin-right: 60%;
+  }
+
 }
 </style>
