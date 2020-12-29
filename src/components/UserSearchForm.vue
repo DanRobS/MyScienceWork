@@ -14,9 +14,10 @@
         </b-autocomplete>
       </b-field>
 
-      <b-button id="searchButton" type="submit">
-        Rechercher
-      </b-button>
+      <a id="searchButton" type="submit"  
+        class="button is-info is-outlined">
+          Rechercher
+      </a>
       
   </div>
 </template>

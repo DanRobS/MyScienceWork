@@ -69,44 +69,55 @@ export default {
 
 
 <style lang="scss">
+.Avatar {
+  //border-style: solid;
+  //border-color: black;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.Titles {
+  font-size: 150%;
+  font-style: oblique;
+  font-weight: bold;
+  margin-bottom: 1%;
+}
+
+.social-media {
+  padding-right: 50%;
+}
+
+.social-media-link {
+  margin-bottom: 3%;
+}
+
+#Avatar-pic {
+  border-style: solid;
+  border-color: black;
+}
+
+#name {
+  font-size: 180%;
+  font-style: normal;
+  font-weight: bold;
+}
+
+#about-text {
+  margin-bottom: 3%;
+}
+
+.social-media-anchor {
+  font-size: 130%;
+}
+
+@media (max-width: 768px) {
   .Avatar {
-    //border-style: solid;
-    //border-color: black;
-    padding-left: 1%;
-    padding-right: 1%;
-  }
-
-  .Titles {
-    font-size: 150%;
-    font-style: oblique;
-    font-weight: bold;
-    margin-bottom: 1%;
-  }
-
-  .social-media {
-    padding-right: 50%;
-  }
-
-  .social-media-link {
-    margin-bottom: 3%;
-  }
-
-  #Avatar-pic {
     border-style: solid;
     border-color: black;
+    margin-bottom: 10%;
+    padding-top: 2%;
   }
+  
+} 
 
-  #name {
-    font-size: 180%;
-    font-style: normal;
-    font-weight: bold;
-  }
-
-  #about-text {
-    margin-bottom: 3%;
-  }
-
-  .social-media-anchor {
-    font-size: 130%;
-  }
 </style>

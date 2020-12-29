@@ -16,6 +16,8 @@
       </b-field>
     </div>
 
+    <hr>
+
     <div id="user-social-media">
       <b-field label="Social media ids">
         <b-input value="" placeholder="URL/username/id"></b-input>
@@ -28,13 +30,15 @@
         <b-button>+</b-button>
         <b-button>-</b-button>
       </b-field>
-      
     </div>
+
+    <hr>
 
     <div id="user-affiliation">
 
       <b-field>
-        <b-button size="is-medium">Ajouter une affiliation</b-button>
+        <a id="add-affiliation-button" class="button is-info is-outlined is-medium">
+          Ajouter une affiliation</a>
       </b-field>
 
       <b-field label="Organisation"
@@ -53,7 +57,7 @@
         <b-field label="Durée" class="">
           <b-datepicker
             placeholder="Date de début"
-            icon="calendar-alt"
+            icon="calendar-day"
             :locale="locale"
             editable>
           </b-datepicker>
@@ -317,7 +321,10 @@
 
         </b-select>
       </b-field>
-      
+      <b-icon
+                icon="account"
+                size="is-small">
+            </b-icon>
     </div>
     
     <div>
@@ -370,12 +377,14 @@ export default {
 
 #user-social-media {
   margin-bottom: 3%;
-  //margin-right: 75%;
+}
+
+#add-affiliation-button {
+  margin-bottom: 5%;
 }
 
 #user-affiliation {
   margin-bottom: 3%;
-  //margin-right: 50%;
 }
 
 #dates {
@@ -390,6 +399,12 @@ export default {
   padding-top: 1%;
   padding-bottom: 1%;
 }
+
+@media (max-width: 768px) {
+  #user-social-media {
+    margin-bottom: 5%;
+  }
+} 
 
 @media (min-width: 1000px) {
   #user-infos-fields {
