@@ -25,11 +25,17 @@
           <option value="Twitter">Twitter</option>
           <option value="Orcid">Orcid</option>
         </b-select>
+        <b-button>+</b-button>
+        <b-button>-</b-button>
       </b-field>
       
     </div>
 
     <div id="user-affiliation">
+
+      <b-field>
+        <b-button size="is-medium">Ajouter une affiliation</b-button>
+      </b-field>
 
       <b-field label="Organisation"
         :label-position="labelPosition">
@@ -321,14 +327,14 @@
                 multiple
                 drag-drop class="column">
                 <section class="section">
-                    <div class="">
+                    <div class="has-text-centered">
                         <p>
                             <b-icon class=""
                                 icon="upload"
                                 size="is-large">
                             </b-icon>
                         </p>
-                        <p>Drag and drop avatar here</p>
+                        <p class="subtitle is-5">Drag and drop avatar here</p>
                     </div>
                 </section>
             </b-upload>
