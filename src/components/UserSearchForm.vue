@@ -34,7 +34,7 @@ export default {
 
 <style lang="scss">
 
-.UserSearchBar {
+.UserSearchForm {
   margin-top: 2%;
   display: flex;
   flex-direction: column;

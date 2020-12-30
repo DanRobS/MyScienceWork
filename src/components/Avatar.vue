@@ -115,6 +115,8 @@ export default {
   .Avatar {
     border-style: solid;
     border-color: black;
+    border-radius: 5px;
+    border-width: 2px;
     margin-bottom: 10%;
     padding-top: 2%;
   }

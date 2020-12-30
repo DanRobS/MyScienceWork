@@ -3,13 +3,9 @@
 
 // Set your colors
 $primary: #344b98;
-//$info: ;
 $primary-light: findLightColor($primary);
 $primary-dark: findDarkColor($primary);
 $primary-invert: findColorInvert($primary);
-$facebook: #3b5998;
-$twitter: #4099FF;
-$twitter-invert: findColorInvert($twitter);
 
 //style for tabs
 $tabs-link-color: $primary;//text color
@@ -22,11 +18,9 @@ $tabs-toggle-link-border-width: 3px;
 $tabs-toggle-link-hover-background-color: #c2ccea;
 
 $tabs-toggle-link-active-background-color: $primary;//background color when tab is active
-$tabs-toggle-link-active-color: white;
+$tabs-toggle-link-active-color: white;//text colo when tab activated
 
-// Lists and maps
-$custom-colors: null !default;
-$custom-shades: null !default;
+$success:red;
 
 $colors: mergeColorMaps(
     (
@@ -85,12 +79,6 @@ $colors: mergeColorMaps(
     ),
     $custom-colors
 );
-
-
-$link: $primary;
-$link-invert: $primary-invert;
-$link-focus-border: $primary;
-
 
 // Import Bulma and Buefy styles
 @import "~bulma";

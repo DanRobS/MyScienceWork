@@ -47,6 +47,7 @@ export default {
   .affiliation-name {
     font-size: 200%;
     font-weight: bold;
+    color: #344b98;
   }
 
   .affiliation-role {

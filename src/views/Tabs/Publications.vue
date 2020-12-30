@@ -16,7 +16,7 @@
       </b-field>
     </div>
 
-    <ul>
+    <ul id="publication-list">
       <li class="publication">
         <p class="publication-infos">
           <span class="pub-authors">Hugh Généreux, Frank Martin</span>.
@@ -69,15 +69,17 @@ export default {
 
 .pub-authors {
   font-style: italic;
-
+  color: #344b98;
 }
 
 .pub-date {
   font-style: italic;
+  color: #344b98;
 }
 
 .pub-title {
   font-weight: bold;
+  color: #344b98;
 }
 
 @media (max-width: 768px) {

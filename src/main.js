@@ -12,7 +12,7 @@ Vue.config.productionTip = false
 
 Vue.use(Buefy, {
   defaultIconComponent: 'vue-fontawesome',
-  defaultIconPack: 'fas',
+  defaultIconPack: 'fas'
 });
 
 new Vue({

@@ -1,8 +1,8 @@
 <template>
   <div class="TabsUtilisateur column is-9">
-    <div id="top-tabs" class="tabs is-toggle 
+    <div class="tabs is-toggle 
               is-centered is-large is-info">
-      <ul @click="activateTab">
+      <ul id="top-tabs" @click="activateTab">
         <li class="tab is-active">
             <router-link to="/vuegenerale">
             <span class="icon">
@@ -61,12 +61,19 @@ export default {
 .TabsUtilisateur {
   border-style: solid;
   border-color: black;
-  background-color: #a4b2e0;
+  background-color: #95a5db;
 }
 
 @media (max-width: 768px) {
   #top-tabs {
-        
+    flex-direction: column;
+  }
+  .TabsUtilisateur {
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    border-width: 2px;
+    background-color: #95a5db;
   }
 }
 

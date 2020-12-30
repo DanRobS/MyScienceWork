@@ -321,14 +321,14 @@
 
         </b-select>
       </b-field>
-      <b-icon
-                icon="account"
-                size="is-small">
-            </b-icon>
+        <b-icon
+          icon="account"
+          size="is-small">
+        </b-icon>
     </div>
     
     <div>
-      <b-field class="">
+      <b-field class="upload-div">
             <b-upload v-model="dropFiles"
                 multiple
                 drag-drop class="column">
@@ -336,9 +336,9 @@
                     <div class="has-text-centered">
                         <p>
                           <font-awesome-icon :icon="['fas', 'upload']" size="2x"
-                          :style="{ color: '05080f' }"/>
+                          :style="{ color: 'white' }"/>
                         </p>
-                        <p class="subtitle is-5">Drag and drop avatar here</p>
+                        <p class="upload-text">Drag and drop avatar here</p>
                     </div>
                 </section>
             </b-upload>
@@ -370,9 +370,17 @@ export default {
 }
 
 .upload-div {
-  border-style: solid;
-  border-color: black;
-  flex-grow: 10;
+  background-color: #344b98;
+  border-radius: 10px;
+}
+
+.upload-text {
+  color:white;
+  font-size: 150%;
+}
+
+.upload-div:hover {
+  background-color: #4965c1;
 }
 
 #user-social-media {
