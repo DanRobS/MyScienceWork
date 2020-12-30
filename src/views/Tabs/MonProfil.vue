@@ -37,7 +37,7 @@
     <div id="user-affiliation">
 
       <b-field>
-        <a id="add-affiliation-button" class="button is-info is-outlined is-medium">
+        <a id="add-affiliation-button" class="button is-primary is-outlined is-medium">
           Ajouter une affiliation</a>
       </b-field>
 
@@ -336,7 +336,7 @@
                     <div class="has-text-centered">
                         <p>
                           <font-awesome-icon :icon="['fas', 'upload']" size="2x"
-                          :style="{ color: '' }"/>
+                          :style="{ color: '05080f' }"/>
                         </p>
                         <p class="subtitle is-5">Drag and drop avatar here</p>
                     </div>

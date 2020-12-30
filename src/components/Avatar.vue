@@ -1,5 +1,5 @@
 <template>
-  <div class="Avatar">
+  <div class="Avatar column">
 
     <div id="Avatar-pic">
       <b-image
@@ -108,6 +108,7 @@ export default {
 
 .social-media-anchor {
   font-size: 130%;
+  color: #4965c1;
 }
 
 @media (max-width: 768px) {

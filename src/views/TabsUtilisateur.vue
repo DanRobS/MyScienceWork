@@ -38,6 +38,7 @@ export default {
 .TabsUtilisateur {
   border-style: solid;
   border-color: black;
+  background-color: #d1d8ef;
 }
 
 #top-tabs {

@@ -15,7 +15,7 @@
       </b-field>
 
       <a id="searchButton" type="submit"  
-        class="button is-info is-outlined">
+        class="button is-primary is-outlined">
           Rechercher
       </a>
       
