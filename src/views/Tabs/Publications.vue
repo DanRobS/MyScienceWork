@@ -12,7 +12,7 @@
           @select="option => selected = option">
           <template slot="empty">No results found</template>
         </b-autocomplete>
-        <b-button>Rechercher</b-button>
+        <b-button class="is-primary">Rechercher</b-button>
       </b-field>
     </div>
 

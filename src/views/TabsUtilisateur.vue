@@ -1,31 +1,30 @@
 <template>
   <div class="TabsUtilisateur column is-9">
     <div id="top-tabs" class="tabs is-toggle 
-              is-centered is-boxed is-large is-info"
-              type="is-toggle">
-      <ul>
-        <li>
+              is-centered is-large is-info">
+      <ul @click="activateTab">
+        <li class="tab is-active">
             <router-link to="/vuegenerale">
             <span class="icon">
-              <font-awesome-icon :icon="['fas', 'home']" size=""
+              <font-awesome-icon :icon="['fas', 'home']"
                 :style="{ color: '#344b98' }"/>
             </span>
               Vue generale
             </router-link>
         </li>
-        <li>
+        <li class="tab">
             <router-link to="/profil">
             <span class="icon">
-              <font-awesome-icon :icon="['fas', 'user']" size=""
+              <font-awesome-icon :icon="['fas', 'user']"
                 :style="{ color: '#344b98' }"/>
             </span>
               Mon profil
             </router-link>
         </li>
-        <li>
+        <li class="tab">
             <router-link to="/publications">
             <span class="icon">
-              <font-awesome-icon :icon="['fas', 'file-alt']" size=""
+              <font-awesome-icon :icon="['fas', 'file-alt']"
                 :style="{ color: '#344b98' }"/>
             </span>
               Mes publications
@@ -41,6 +40,20 @@
 export default {
   name: 'TabsUtilisateur',
   components: {
+
+  },
+  methods: {
+    //code snippet from 'the net ninja'
+    //enables 'is-active' tag on selected tab
+    activateTab: function () {
+      var tabs = document.getElementsByClassName('tab');
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(item => item.classList.remove('is-active'))
+          tab.classList.add('is-active')
+        })
+      })
+    }
 
   }
 } 
