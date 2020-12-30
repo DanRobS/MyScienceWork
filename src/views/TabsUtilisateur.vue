@@ -61,7 +61,7 @@ export default {
 .TabsUtilisateur {
   border-style: solid;
   border-color: black;
-  background-color: #95a5db;
+  background-color: #8D97B9;
 }
 
 @media (max-width: 768px) {
@@ -73,7 +73,7 @@ export default {
     border-color: black;
     border-radius: 5px;
     border-width: 2px;
-    background-color: #95a5db;
+    background-color: #8D97B9;
   }
 }
 

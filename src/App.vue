@@ -29,7 +29,6 @@ export default {
 
 
 <style lang="scss">
-@import "./assets/mystyles.scss";
 
 
 #user-infos {

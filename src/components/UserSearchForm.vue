@@ -3,11 +3,11 @@
 
       <b-field>
         <b-autocomplete
-          rounded
           v-model="name"
           :data="filteredDataArray"
           placeholder="Rechercher un utilisateur"
-          icon="magnify"
+          icon="calendar-day"
+          icon-pack="fas"
           clearable
           @select="option => selected = option">
           <template slot="empty">No results found</template>
@@ -15,7 +15,7 @@
       </b-field>
 
       <a id="searchButton" type="submit"  
-        class="button is-primary is-outlined">
+        class="button is-primary is-light is-focused">
           Rechercher
       </a>
       

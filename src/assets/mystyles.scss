@@ -18,9 +18,9 @@ $tabs-toggle-link-border-width: 3px;
 $tabs-toggle-link-hover-background-color: #c2ccea;
 
 $tabs-toggle-link-active-background-color: $primary;//background color when tab is active
+$tabs-toggle-link-active-border-color: $primary;//border color when tab active
 $tabs-toggle-link-active-color: white;//text colo when tab activated
 
-$success:red;
 
 $colors: mergeColorMaps(
     (
