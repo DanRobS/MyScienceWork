@@ -6,8 +6,7 @@
         <li class="tab is-active">
             <router-link to="/vuegenerale">
             <span class="icon">
-              <font-awesome-icon :icon="['fas', 'home']"
-                :style="{ color: '#344b98' }"/>
+              <font-awesome-icon :icon="['fas', 'home']"/>
             </span>
               Vue generale
             </router-link>
@@ -15,8 +14,7 @@
         <li class="tab">
             <router-link to="/profil">
             <span class="icon">
-              <font-awesome-icon :icon="['fas', 'user']"
-                :style="{ color: '#344b98' }"/>
+              <font-awesome-icon :icon="['fas', 'user']"/>
             </span>
               Mon profil
             </router-link>
@@ -24,8 +22,7 @@
         <li class="tab">
             <router-link to="/publications">
             <span class="icon">
-              <font-awesome-icon :icon="['fas', 'file-alt']"
-                :style="{ color: '#344b98' }"/>
+              <font-awesome-icon :icon="['fas', 'file-alt']"/>
             </span>
               Mes publications
             </router-link>
