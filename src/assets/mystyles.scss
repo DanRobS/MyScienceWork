@@ -4,12 +4,18 @@
 // Set your colors
 $primary: #344b98;
 //$info: ;
-$primary-light: #000;
+$primary-light: findLightColor($primary);
 $primary-dark: findDarkColor($primary);
 $primary-invert: findColorInvert($primary);
 $facebook: #3b5998;
 $twitter: #4099FF;
 $twitter-invert: findColorInvert($twitter);
+
+//style for tabs
+$tabs-link-color: $primary;//text color
+$tabs-link-hover-color: $primary;//text color when hovering
+$tabs-link-active-color: white;
+
 
 // Lists and maps
 $custom-colors: null !default;
