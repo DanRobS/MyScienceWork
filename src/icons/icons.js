@@ -6,10 +6,12 @@ import { faFacebookSquare, faLinkedin, faTwitter, faOrcid
 import { faUpload, faUser, faFileAlt, faHome,
         faCalendarDay, 
         faPlus,
-        faMinus} from '@fortawesome/free-solid-svg-icons'
+        faMinus,
+        faPen,
+        faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faFacebookSquare, faLinkedin, faTwitter, faOrcid,
         faUpload, faUser, faFileAlt, faHome, faCalendarDay,
-        faPlus, faMinus)
+        faPlus, faMinus, faTrashAlt, faPen)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)

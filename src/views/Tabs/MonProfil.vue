@@ -29,6 +29,7 @@
         </b-select>
         <div class="field is-grouped">
           <p class="control buttons">
+            <!--
             <button class="button is-primary is-focused">
               <font-awesome-icon :icon="['fas', 'plus']" size="2x"
                           :style="{ color: 'white' }"/>
@@ -37,6 +38,7 @@
               <font-awesome-icon :icon="['fas', 'minus']" size="2x"
                           :style="{ color: 'white' }"/>
             </button>
+            -->
           </p>
         </div>
       </b-field>
@@ -53,39 +55,36 @@
         Ajouter une affiliation</button>
       </b-field>
 
-      <ul id="affiliation-list">
-        <li class="affiliation-list-item">
+      <b-field label="Organisation"
+        :label-position="labelPosition">
+        <b-select id="organisation-field" placeholder="Select an organisation">
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+        </b-select>       
+      </b-field>
 
-          <b-field label="Organisation"
-            :label-position="labelPosition">
-              <b-select placeholder="Select an organisation">
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-              </b-select>
-          </b-field>
+      <b-field label="Equipe">
+        <b-input value=""></b-input>
+      </b-field>
 
-          <b-field label="Equipe">
-            <b-input value=""></b-input>
-          </b-field>
+      <div id="dates" class="">
+        <b-field label="Durée" class="">
+          <b-datepicker
+            placeholder="Date de début"
+            icon="calendar-alt"
+            :locale="locale"
+            editable>
+          </b-datepicker>
+          <b-datepicker
+            placeholder="Date de fin"
+            icon="calendar-alt"
+            :locale="locale"
+            editable>
+          </b-datepicker>
+        </b-field>
+      </div>
 
-          <div id="dates" class="">
-            <b-field label="Durée" class="">
-              <b-datepicker
-                placeholder="Date de début"
-                icon="calendar-alt"
-                :locale="locale"
-                editable>
-              </b-datepicker>
-              <b-datepicker
-                placeholder="Date de fin"
-                icon="calendar-alt"
-                :locale="locale"
-                editable>
-              </b-datepicker>
-            </b-field>
-          </div>
-
-          <b-field label="Pays">
+      <b-field label="Pays">
             <b-select placeholder="Select a country">
               <option value="Afganistan">Afghanistan</option>
               <option value="Albania">Albania</option>
@@ -335,8 +334,30 @@
               <option value="Zimbabwe">Zimbabwe</option>
 
             </b-select>
-          </b-field>
+      </b-field>
+
+      <ul id="affiliation-registered">
+
+        <li class="columns aff-registered-item">
+          <div class="column">
+            <p class="aff-org">Organisation 1</p>
+            <p class="aff-team">Equipe</p>
+            <p class="aff-dates">Dates</p>
+            <p class="aff-pays">Pays</p>
+          </div>
+          <div class="column">
+              <span class="icon update-delete-icons"
+                @click="updateAffiliation">
+                <font-awesome-icon :icon="['fas', 'pen']"/>
+              </span>
+              |
+              <span id="delete-button" class="icon update-delete-icons"
+                @click="deleteAffiliation">
+                <font-awesome-icon :icon="['fas', 'trash-alt']"/>
+              </span>
+          </div>
         </li>
+
       </ul>
       
     </div>
@@ -371,12 +392,24 @@ export default {
   },
   methods: {
     addAffiliation: function() {
-      var affiliationList = document.getElementById('affiliation-list');
-      var affiliationItem = document.getElementById('affiliation-list').lastChild;
+      //var organisation = document.getElementById('organisation-field').selectedOptions[0].text;
       
-      var item = affiliationItem.cloneNode(true);
-      
-      affiliationList.appendChild(item);
+    },
+
+    updateAffiliation: function() {
+
+    },
+
+    deleteAffiliation: function() {
+      var listRegisteredAff = document
+        .getElementsByClassName('aff-registered-item');
+      listRegisteredAff.forEach((item) => {
+        item.childNodes[1].childNodes[2].addEventListener(
+          'click', 
+          function() {
+            item.remove();
+        })
+      })
     }
   }
 }
@@ -393,6 +426,59 @@ export default {
   flex-direction: column;
 }
 
+//css for registered affiliation list
+.aff-org {
+  font-size: 150%;
+  font-weight: bold;
+}
+
+.aff-team {
+  font-size: 150%;
+}
+
+.aff-dates {
+  font-size: 150%;
+}
+
+.aff-pays {
+  font-size: 150%;
+  font-style: italic;
+}
+
+#add-affiliation-button {
+  margin-bottom: 5%;
+}
+
+#user-affiliation {
+  margin-bottom: 3%;
+}
+
+.affiliation-list-item {
+  margin-bottom: 10%;
+}
+
+.aff-registered-item {
+  margin-bottom: 3%;
+}
+
+#dates {
+  margin-bottom: 3%;
+}
+
+.update-delete-icons {
+  color: #344b98;
+  font-size: 100%;
+}
+
+.update-delete-icons:hover {
+  color: #4a4a4a;
+}
+
+.update-delete-icons:active {
+  color: black;
+}
+
+//css for upload avatar section
 .upload-div {
   background-color: #344b98;
   border-radius: 10px;
@@ -407,26 +493,6 @@ export default {
   background-color: #4965c1;
 }
 
-.affiliation-list-item {
-  margin-bottom: 15%;
-}
-
-#user-social-media {
-  margin-bottom: 3%;
-}
-
-#add-affiliation-button {
-  margin-bottom: 5%;
-}
-
-#user-affiliation {
-  margin-bottom: 3%;
-}
-
-#dates {
-  margin-bottom: 3%;
-}
-
 #avatar-pic-upload {
   border-style: solid;
   border-color: black;
@@ -436,12 +502,23 @@ export default {
   padding-bottom: 1%;
 }
 
+//css for social media section
+#user-social-media {
+  margin-bottom: 3%;
+}
+
+//css for phone screens
 @media (max-width: 768px) {
   #user-social-media {
     margin-bottom: 5%;
   }
+
+  .upload-div {
+    margin-top: 20%;
+  }
 } 
 
+//css for pad-sized screens +
 @media (min-width: 1000px) {
   #user-infos-fields {
     margin-right: 65%;
