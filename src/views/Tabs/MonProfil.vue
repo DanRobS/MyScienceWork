@@ -431,13 +431,24 @@ export default {
     deleteAffiliation: function() {
       var listRegisteredAff = document
         .getElementsByClassName('aff-registered-item');
-      listRegisteredAff.forEach((item) => {
-        item.childNodes[1].childNodes[2].addEventListener(
-          'click', 
-          function() {
-            item.remove();
+      
+      if(listRegisteredAff.length > 1){
+        listRegisteredAff.forEach((item) => {
+          item.childNodes[1].childNodes[2].addEventListener(
+            'click', 
+            function() {
+              item.remove();
+          })
         })
-      })
+      } else {
+        this.$buefy.notification.open({
+            duration: 3000,
+            message: 'There has to be at least one affiliation',
+            position: 'is-bottom',
+            type: 'is-light',
+            hasIcon: true
+          })
+      }
     }
   }
 }
