@@ -64,18 +64,20 @@
       </b-field>
 
       <b-field label="Equipe">
-        <b-input value=""></b-input>
+        <b-input id="team-field"></b-input>
       </b-field>
 
       <div id="dates" class="">
         <b-field label="Durée" class="">
-          <b-datepicker
+          <b-datepicker 
+            id="date-beginning"
             placeholder="Date de début"
             icon="calendar-alt"
             :locale="locale"
             editable>
           </b-datepicker>
           <b-datepicker
+            id="date-end"
             placeholder="Date de fin"
             icon="calendar-alt"
             :locale="locale"
@@ -85,7 +87,7 @@
       </div>
 
       <b-field label="Pays">
-            <b-select placeholder="Select a country">
+            <b-select id="country" placeholder="Select a country">
               <option value="Afganistan">Afghanistan</option>
               <option value="Albania">Albania</option>
               <option value="Algeria">Algeria</option>
@@ -392,8 +394,34 @@ export default {
   },
   methods: {
     addAffiliation: function() {
-      //var organisation = document.getElementById('organisation-field').selectedOptions[0].text;
+
+      var organisation = null;
+      var team = null;
+      var dateBeginning = null;
+      var dateEnding = null;
+      var country = null;
+
+      organisation = document.getElementById('organisation-field').selectedOptions[0].text;
+      team = document.getElementById('team-field').value;
+      dateBeginning = document.getElementById('date-beginning').value;
+      dateEnding = document.getElementById('date-end').value;
+      country = document.getElementById('country').selectedOptions[0].text;
       
+      if (organisation != 'Select an organisation'
+        && team != ''
+        && dateBeginning != ''
+        && dateEnding != '' 
+        && country != 'Select a country') {
+          console.log('top top');
+      } else {
+        this.$buefy.notification.open({
+            duration: 3000,
+            message: 'You must fill all fields',
+            position: 'is-bottom',
+            type: 'is-light',
+            hasIcon: true
+          })
+      }
     },
 
     updateAffiliation: function() {
