@@ -14,10 +14,10 @@
         </b-autocomplete>
       </b-field>
 
-      <a id="searchButton" type="submit"  
+      <button id="searchButton" type="submit"  
         class="button is-primary is-light is-focused">
           Rechercher
-      </a>
+      </button>
       
   </div>
 </template>

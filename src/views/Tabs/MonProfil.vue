@@ -21,14 +21,24 @@
     <div id="user-social-media">
       <b-field label="Social media ids">
         <b-input value="" placeholder="URL/username/id"></b-input>
-        <b-select placeholder="">
+        <b-select placeholder="LinkedIn">
           <option value="Facebook">Facebook</option>
           <option value="LinkedIn">LinkedIn</option>
           <option value="Twitter">Twitter</option>
           <option value="Orcid">Orcid</option>
         </b-select>
-        <b-button>+</b-button>
-        <b-button>-</b-button>
+        <div class="field is-grouped">
+          <p class="control buttons">
+            <button class="button is-primary is-focused">
+              <font-awesome-icon :icon="['fas', 'plus']" size="2x"
+                          :style="{ color: 'white' }"/>
+            </button>
+            <button class="button is-primary is-focused">
+              <font-awesome-icon :icon="['fas', 'minus']" size="2x"
+                          :style="{ color: 'white' }"/>
+            </button>
+          </p>
+        </div>
       </b-field>
     </div>
 
@@ -37,10 +47,10 @@
     <div id="user-affiliation">
 
       <b-field>
-        <a id="add-affiliation-button" 
+        <button id="add-affiliation-button" 
           class="button is-primary is-focused is-medium"
           @click="addAffiliation">
-        Ajouter une affiliation</a>
+        Ajouter une affiliation</button>
       </b-field>
 
       <ul id="affiliation-list">
@@ -361,13 +371,12 @@ export default {
   },
   methods: {
     addAffiliation: function() {
-      //var listAffiliation = document.getElementById('list-affiliation');
-      //var affiliationItem = document.getElementsByClassName('affiliation-list-item');
+      var affiliationList = document.getElementById('affiliation-list');
+      var affiliationItem = document.getElementById('affiliation-list').lastChild;
       
-      //var listItem = document.createElement('li');
+      var item = affiliationItem.cloneNode(true);
       
-
-
+      affiliationList.appendChild(item);
     }
   }
 }
@@ -396,6 +405,10 @@ export default {
 
 .upload-div:hover {
   background-color: #4965c1;
+}
+
+.affiliation-list-item {
+  margin-bottom: 15%;
 }
 
 #user-social-media {
