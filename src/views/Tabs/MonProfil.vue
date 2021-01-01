@@ -352,7 +352,7 @@
           <div class="column">
             <p class="aff-org">{{item.organisation}}</p>
             <p class="aff-team">{{item.equipe}}</p>
-            <p v-if="item.dateDebut != '' && item.dateFin === ''" class="aff-dates">Depuis {{item.dateDebut}}</p>
+            <p v-if="item.dateDebut != '' && item.dateFin === 'Invalid Date'" class="aff-dates">Depuis {{item.dateDebut}}</p>
             <p v-else class="aff-dates">{{item.dateDebut}} - {{item.dateFin}}</p>
             <p class="aff-pays">{{item.pays}}</p>
           </div>
@@ -415,6 +415,27 @@ export default {
           dateFin: '02/07/2021',
           pays: 'Gabon',
         },
+        {
+          organisation: 'Organisation 2',
+          equipe: 'Equipe 2',
+          dateDebut: '01/06/2020',
+          dateFin: '02/07/2021',
+          pays: 'Gabon',
+        },
+        {
+          organisation: 'Organisation 3',
+          equipe: 'Equipe 3',
+          dateDebut: '01/06/2020',
+          dateFin: '02/07/2021',
+          pays: 'Gabon',
+        },
+        {
+          organisation: 'Organisation 4',
+          equipe: 'Equipe 4',
+          dateDebut: '01/06/2020',
+          dateFin: '02/07/2021',
+          pays: 'Gabon',
+        },
       
       ]
     }
@@ -427,8 +448,8 @@ export default {
           var newAffItem = {
             organisation: this.newAffiliation.organisation,
             equipe: this.newAffiliation.equipe,
-            dateDebut: this.newAffiliation.dateDebut,
-            dateFin: this.newAffiliation.dateFin,
+            dateDebut: new Date(this.newAffiliation.dateDebut).toLocaleDateString(),
+            dateFin: new Date(this.newAffiliation.dateFin).toLocaleDateString(),
             pays: this.newAffiliation.pays
           }
           
@@ -448,48 +469,6 @@ export default {
             hasIcon: true
           })
       }
-
-      
-      /*
-      var organisation = null;
-      var team = null;
-      var dateBeginning = null;
-      var dateEnding = null;
-      var country = null;
-
-      organisation = document.getElementById('organisation-field').selectedOptions[0].value;
-      team = document.getElementById('team-field').value;
-      dateBeginning = document.getElementById('date-beginning').value;
-      dateEnding = document.getElementById('date-end').value;
-      country = document.getElementById('country').selectedOptions[0].value;
-      
-      if (organisation != ''
-        && country != '') {
-          this.newAffiliation.organisation = organisation;
-          this.newAffiliation.equipe = team;
-          this.newAffiliation.dateDebut = dateBeginning;
-          this.newAffiliation.dateFin = dateEnding;
-          this.newAffiliation.pays = country;
-
-          this.affiliations.push(this.newAffiliation);
-
-
-
-          this.newAffiliation.organisation = '';
-          this.newAffiliation.equipe = '';
-          this.newAffiliation.dateDebut = '';
-          this.newAffiliation.dateFin = '';
-          this.newAffiliation.pays = '';
-          
-      } else {
-        this.$buefy.notification.open({
-            duration: 3000,
-            message: 'You must fill all fields',
-            position: 'is-bottom',
-            type: 'is-light',
-            hasIcon: true
-          })
-      }*/
     },
 
     updateAffiliation: function() {
