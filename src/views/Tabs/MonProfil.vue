@@ -20,8 +20,8 @@
 
     <div id="user-social-media">
       <b-field label="Social media ids">
-        <b-input value="" placeholder="URL/username/id"></b-input>
-        <b-select placeholder="LinkedIn">
+        <b-input id="social_media_input" value="" placeholder="URL/username/id"></b-input>
+        <b-select id="social_media_select">
           <option value="Facebook">Facebook</option>
           <option value="LinkedIn">LinkedIn</option>
           <option value="Twitter">Twitter</option>
@@ -29,11 +29,11 @@
         </b-select>
         <div class="to-hide-mobile">
           <p class="control buttons">
-            <button class="button is-primary is-focused">
+            <button @click="addSocialMedia" class="button is-primary is-focused">
             <font-awesome-icon :icon="['fas', 'plus']" size="2x"
               :style="{ color: 'white' }"/>
             </button>
-            <button class="button is-primary is-focused">
+            <button @click="removeSocialMedia" class="button is-primary is-focused">
               <font-awesome-icon :icon="['fas', 'minus']" size="2x"
                 :style="{ color: 'white' }"/>
             </button>    
@@ -42,11 +42,11 @@
       </b-field>
       <div class="to-hide-laptop">
         <p class="control buttons">
-          <button class="button is-primary is-focused">
+          <button @click="addSocialMedia" class="button is-primary is-focused">
             <font-awesome-icon :icon="['fas', 'plus']" size="2x"
               :style="{ color: 'white' }"/>
           </button>
-          <button class="button is-primary is-focused">
+          <button @click="removeSocialMedia" class="button is-primary is-focused">
             <font-awesome-icon :icon="['fas', 'minus']" size="2x"
               :style="{ color: 'white' }"/>
           </button>
@@ -67,8 +67,7 @@
 
       <b-field label="Organisation"
         :label-position="labelPosition">
-        <b-select id="organisation-field" 
-                  placeholder="Select an organisation"
+        <b-select id="organisation-field"
                   v-model="newAffiliation.organisation">
           <option disabled value="">Select an organisation</option>
           <option value="Option 1">Option 1</option>
@@ -410,6 +409,12 @@ export default {
   name: 'MonProfil',
   data: () => {
     return {
+      social_media: {
+        facebook: '',
+        linkedin: '',
+        twitter: '',
+        orcid: ''
+      },
       newAffiliation: {
         organisation: '',
         equipe: '',
@@ -430,7 +435,6 @@ export default {
   },
   methods: {
     addAffiliation: function() {
-      
       if (this.newAffiliation.organisation != '' 
           && this.newAffiliation.pays != '') {
           var newAffItem = {
@@ -466,6 +470,52 @@ export default {
     deleteAffiliation: function(item) {
         var i = this.affiliations.indexOf(item);
         this.affiliations.splice(i, 1);
+    },
+    addSocialMedia: function() {
+      var soc_media = document.getElementById("social_media_select")
+          .selectedOptions[0].value;
+      var soc_media_input = document.getElementById("social_media_input")
+          .value;
+
+      if(soc_media_input == ''){
+        this.$buefy.notification.open({
+            duration: 3000,
+            message: 'Enter your social media URL/Username/Id',
+            position: 'is-bottom',
+            type: 'is-light',
+            hasIcon: true
+          })
+      }
+
+      switch (soc_media) {
+        case 'Facebook':
+          this.social_media.facebook = soc_media_input;
+          document.getElementById("social_media_input")
+          .value='';
+          break;
+
+        case 'LinkedIn':
+          this.social_media.linkedin = soc_media_input;
+          document.getElementById("social_media_input")
+          .value='';
+          break;
+      
+        case 'Twitter':
+          this.social_media.twitter = soc_media_input;
+          document.getElementById("social_media_input")
+          .value='';
+          break;
+
+        case 'Orcid':
+          this.social_media.orcid = soc_media_input;
+          document.getElementById("social_media_input")
+          .value='';
+          break;
+      }
+
+    },
+    removeSocialMedia: function() {
+
     }
   }
 }
