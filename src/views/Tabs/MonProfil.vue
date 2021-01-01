@@ -77,7 +77,7 @@
             v-model="newAffiliation.dateDebut" 
             id="date-beginning"
             placeholder="Date de début"
-            icon="calendar-alt"
+            icon="calendar-today"
             :locale="locale"
             editable>
           </b-datepicker>
@@ -85,7 +85,7 @@
             v-model="newAffiliation.dateFin"
             id="date-end"
             placeholder="Date de fin"
-            icon="calendar-alt"
+            icon="calendar-today"
             :locale="locale"
             editable>
           </b-datepicker>
@@ -352,7 +352,8 @@
           <div class="column">
             <p class="aff-org">{{item.organisation}}</p>
             <p class="aff-team">{{item.equipe}}</p>
-            <p class="aff-dates">{{item.dateDebut}} - {{item.dateFin}}</p>
+            <p v-if="item.dateDebut != '' && item.dateFin === ''" class="aff-dates">Depuis {{item.dateDebut}}</p>
+            <p v-else class="aff-dates">{{item.dateDebut}} - {{item.dateFin}}</p>
             <p class="aff-pays">{{item.pays}}</p>
           </div>
           <div class="column">
@@ -420,6 +421,36 @@ export default {
   },
   methods: {
     addAffiliation: function() {
+      
+      if (this.newAffiliation.organisation != '' 
+          && this.newAffiliation.pays != '') {
+          var newAffItem = {
+            organisation: this.newAffiliation.organisation,
+            equipe: this.newAffiliation.equipe,
+            dateDebut: this.newAffiliation.dateDebut,
+            dateFin: this.newAffiliation.dateFin,
+            pays: this.newAffiliation.pays
+          }
+          
+          this.affiliations.push(newAffItem);
+
+          this.newAffiliation.organisation = '';
+              this.newAffiliation.equipe = '';
+              this.newAffiliation.dateDebut = '';
+              this.newAffiliation.dateFin = '';
+              this.newAffiliation.pays = '';
+        } else {
+        this.$buefy.notification.open({
+            duration: 3000,
+            message: 'You must fill all fields',
+            position: 'is-bottom',
+            type: 'is-light',
+            hasIcon: true
+          })
+      }
+
+      
+      /*
       var organisation = null;
       var team = null;
       var dateBeginning = null;
@@ -433,10 +464,7 @@ export default {
       country = document.getElementById('country').selectedOptions[0].value;
       
       if (organisation != ''
-        && team != ''
-        && dateBeginning != ''
-        && dateEnding != '' 
-        && country != 'Select a country') {
+        && country != '') {
           this.newAffiliation.organisation = organisation;
           this.newAffiliation.equipe = team;
           this.newAffiliation.dateDebut = dateBeginning;
@@ -445,6 +473,14 @@ export default {
 
           this.affiliations.push(this.newAffiliation);
 
+
+
+          this.newAffiliation.organisation = '';
+          this.newAffiliation.equipe = '';
+          this.newAffiliation.dateDebut = '';
+          this.newAffiliation.dateFin = '';
+          this.newAffiliation.pays = '';
+          
       } else {
         this.$buefy.notification.open({
             duration: 3000,
@@ -453,7 +489,7 @@ export default {
             type: 'is-light',
             hasIcon: true
           })
-      }
+      }*/
     },
 
     updateAffiliation: function() {
