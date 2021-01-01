@@ -27,21 +27,31 @@
           <option value="Twitter">Twitter</option>
           <option value="Orcid">Orcid</option>
         </b-select>
-        <div class="field is-grouped">
+        <div class="to-hide-mobile">
           <p class="control buttons">
-            <!--
             <button class="button is-primary is-focused">
-              <font-awesome-icon :icon="['fas', 'plus']" size="2x"
-                          :style="{ color: 'white' }"/>
+            <font-awesome-icon :icon="['fas', 'plus']" size="2x"
+              :style="{ color: 'white' }"/>
             </button>
             <button class="button is-primary is-focused">
               <font-awesome-icon :icon="['fas', 'minus']" size="2x"
-                          :style="{ color: 'white' }"/>
-            </button>
-            -->
+                :style="{ color: 'white' }"/>
+            </button>    
           </p>
         </div>
       </b-field>
+      <div class="to-hide-laptop">
+        <p class="control buttons">
+          <button class="button is-primary is-focused">
+            <font-awesome-icon :icon="['fas', 'plus']" size="2x"
+              :style="{ color: 'white' }"/>
+          </button>
+          <button class="button is-primary is-focused">
+            <font-awesome-icon :icon="['fas', 'minus']" size="2x"
+              :style="{ color: 'white' }"/>
+          </button>
+        </p>
+      </div>
     </div>
 
     <hr>
@@ -415,29 +425,6 @@ export default {
           dateFin: '02/07/2021',
           pays: 'Gabon',
         },
-        {
-          organisation: 'Organisation 2',
-          equipe: 'Equipe 2',
-          dateDebut: '01/06/2020',
-          dateFin: '02/07/2021',
-          pays: 'Gabon',
-        },
-        {
-          organisation: 'Organisation 3',
-          equipe: 'Equipe 3',
-          dateDebut: '01/06/2020',
-          dateFin: '02/07/2021',
-          pays: 'Gabon',
-        },
-        {
-          organisation: 'Organisation 4',
-          equipe: 'Equipe 4',
-          dateDebut: '01/06/2020',
-          dateFin: '02/07/2021',
-          pays: 'Gabon',
-        },
-        
-      
       ]
     }
   },
@@ -585,6 +572,10 @@ export default {
   .upload-div {
     margin-top: 20%;
   }
+
+  .to-hide-mobile {
+    display: none;
+  }
 } 
 
 //css for pad-sized screens +
@@ -595,6 +586,10 @@ export default {
 
   #user-affiliation {
     margin-right: 60%;
+  }
+
+  .to-hide-laptop {
+    display: none;
   }
 
 }
