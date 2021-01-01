@@ -57,19 +57,24 @@
 
       <b-field label="Organisation"
         :label-position="labelPosition">
-        <b-select id="organisation-field" placeholder="Select an organisation">
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
+        <b-select id="organisation-field" 
+                  placeholder="Select an organisation"
+                  v-model="newAffiliation.organisation">
+          <option disabled value="">Select an organisation</option>
+          <option value="Option 1">Option 1</option>
+          <option value="Option 2">Option 2</option>
         </b-select>       
       </b-field>
 
       <b-field label="Equipe">
-        <b-input id="team-field"></b-input>
+        <b-input id="team-field"
+                  v-model="newAffiliation.equipe"></b-input>
       </b-field>
 
       <div id="dates" class="">
         <b-field label="Durée" class="">
-          <b-datepicker 
+          <b-datepicker
+            v-model="newAffiliation.dateDebut" 
             id="date-beginning"
             placeholder="Date de début"
             icon="calendar-alt"
@@ -77,6 +82,7 @@
             editable>
           </b-datepicker>
           <b-datepicker
+            v-model="newAffiliation.dateFin"
             id="date-end"
             placeholder="Date de fin"
             icon="calendar-alt"
@@ -87,7 +93,9 @@
       </div>
 
       <b-field label="Pays">
-            <b-select id="country" placeholder="Select a country">
+            <b-select id="country"
+                      v-model="newAffiliation.pays">
+              <option disabled value="">Select a country</option>
               <option value="Afganistan">Afghanistan</option>
               <option value="Albania">Albania</option>
               <option value="Algeria">Algeria</option>
@@ -340,12 +348,12 @@
 
       <ul id="affiliation-registered">
 
-        <li class="columns aff-registered-item">
+        <li v-for="item in affiliations" :key="item" class="columns aff-registered-item">
           <div class="column">
-            <p class="aff-org">Organisation 1</p>
-            <p class="aff-team">Equipe</p>
-            <p class="aff-dates">Dates</p>
-            <p class="aff-pays">Pays</p>
+            <p class="aff-org">{{item.organisation}}</p>
+            <p class="aff-team">{{item.equipe}}</p>
+            <p class="aff-dates">{{item.dateDebut}} - {{item.dateFin}}</p>
+            <p class="aff-pays">{{item.pays}}</p>
           </div>
           <div class="column">
               <span class="icon update-delete-icons"
@@ -389,30 +397,54 @@
 <script>
 export default {
   name: 'MonProfil',
-  components: {
-
+  data: () => {
+    return {
+      newAffiliation: {
+        organisation: '',
+        equipe: '',
+        dateDebut: '',
+        dateFin: '',
+        pays: ''
+      },
+      affiliations: [
+        {
+          organisation: 'Organisation 1',
+          equipe: 'Equipe 1',
+          dateDebut: '01/06/2020',
+          dateFin: '02/07/2021',
+          pays: 'Gabon',
+        },
+      
+      ]
+    }
   },
   methods: {
     addAffiliation: function() {
-
       var organisation = null;
       var team = null;
       var dateBeginning = null;
       var dateEnding = null;
       var country = null;
 
-      organisation = document.getElementById('organisation-field').selectedOptions[0].text;
+      organisation = document.getElementById('organisation-field').selectedOptions[0].value;
       team = document.getElementById('team-field').value;
       dateBeginning = document.getElementById('date-beginning').value;
       dateEnding = document.getElementById('date-end').value;
-      country = document.getElementById('country').selectedOptions[0].text;
+      country = document.getElementById('country').selectedOptions[0].value;
       
-      if (organisation != 'Select an organisation'
+      if (organisation != ''
         && team != ''
         && dateBeginning != ''
         && dateEnding != '' 
         && country != 'Select a country') {
-          console.log('top top');
+          this.newAffiliation.organisation = organisation;
+          this.newAffiliation.equipe = team;
+          this.newAffiliation.dateDebut = dateBeginning;
+          this.newAffiliation.dateFin = dateEnding;
+          this.newAffiliation.pays = country;
+
+          this.affiliations.push(this.newAffiliation);
+
       } else {
         this.$buefy.notification.open({
             duration: 3000,
@@ -429,26 +461,10 @@ export default {
     },
 
     deleteAffiliation: function() {
-      var listRegisteredAff = document
-        .getElementsByClassName('aff-registered-item');
-      
-      if(listRegisteredAff.length > 1){
-        listRegisteredAff.forEach((item) => {
-          item.childNodes[1].childNodes[2].addEventListener(
-            'click', 
-            function() {
-              item.remove();
-          })
-        })
-      } else {
-        this.$buefy.notification.open({
-            duration: 3000,
-            message: 'There has to be at least one affiliation',
-            position: 'is-bottom',
-            type: 'is-light',
-            hasIcon: true
-          })
-      }
+      this.affiliations.forEach((item) => {
+        var i = this.affiliations.indexOf(item);
+        this.affiliations.splice(i, 1);
+      })
     }
   }
 }
@@ -476,7 +492,7 @@ export default {
 }
 
 .aff-dates {
-  font-size: 150%;
+  font-size: 120%;
 }
 
 .aff-pays {
