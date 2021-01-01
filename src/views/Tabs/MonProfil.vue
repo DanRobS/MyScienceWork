@@ -363,7 +363,7 @@
               </span>
               |
               <span id="delete-button" class="icon update-delete-icons"
-                @click="deleteAffiliation">
+                @click="deleteAffiliation(item)">
                 <font-awesome-icon :icon="['fas', 'trash-alt']"/>
               </span>
           </div>
@@ -436,6 +436,7 @@ export default {
           dateFin: '02/07/2021',
           pays: 'Gabon',
         },
+        
       
       ]
     }
@@ -475,11 +476,9 @@ export default {
 
     },
 
-    deleteAffiliation: function() {
-      this.affiliations.forEach((item) => {
+    deleteAffiliation: function(item) {
         var i = this.affiliations.indexOf(item);
         this.affiliations.splice(i, 1);
-      })
     }
   }
 }
