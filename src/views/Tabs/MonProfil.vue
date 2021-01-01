@@ -512,10 +512,28 @@ export default {
           .value='';
           break;
       }
-
     },
     removeSocialMedia: function() {
+      var soc_media = document.getElementById("social_media_select")
+          .selectedOptions[0].value;
 
+      switch (soc_media) {
+        case 'Facebook':
+          this.social_media.facebook = '';
+          break;
+
+        case 'LinkedIn':
+          this.social_media.linkedin = '';
+          break;
+      
+        case 'Twitter':
+          this.social_media.twitter = '';
+          break;
+
+        case 'Orcid':
+          this.social_media.orcid = '';
+          break;
+      }
     }
   }
 }
