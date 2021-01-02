@@ -974,7 +974,6 @@ export default {
       var value2 = updateForm.querySelector('#country-update').selectedIndex;
 
       //IF THE UPDATE FORM IS EMPTY
-      
       if(value1==-1
         && updateForm.querySelector('#team-field-update').value==''
         && updateForm.querySelector('#date-beginning-update').value==''
@@ -988,28 +987,69 @@ export default {
             hasIcon: true
           })
       } else {//IF AT LEAST ONE FIELD IS FILLED / SELECTED
-          if(item.organisation !=
+          if(value1 != -1 &&
+            item.organisation !=
              updateForm.querySelector('#organisation-field-update')[value1].value){
                item.organisation = 
                updateForm.querySelector('#organisation-field-update')[value1].value;
              }
           
-          if(item.equipe != 
+          if(updateForm.querySelector('#team-field-update').value != '' &&
+            item.equipe != 
              updateForm.querySelector('#team-field-update').value){
                item.equipe = 
                updateForm.querySelector('#team-field-update').value;
              }
 
-          if(item.organisation !=
+          if(value2 != -1 &&
+            item.pays !=
              updateForm.querySelector('#country-update')[value2].value){
-               item.organisation = 
+               item.pays = 
                updateForm.querySelector('#country-update')[value2].value;
              }
           
+          if(updateForm.querySelector('#date-beginning-update').value != '' &&
+            item.dateDebut != 
+             updateForm.querySelector('#date-beginning-update').value){
+               item.dateDebut = 
+               updateForm.querySelector('#date-beginning-update').value;
+             }
+
+          if(updateForm.querySelector('#date-end-update').value != '' &&
+            item.dateFin != 
+             updateForm.querySelector('#date-end-update').value){
+               item.dateFin = 
+               updateForm.querySelector('#date-end-update').value;
+             } else if (updateForm.querySelector('#date-end-update').value==''){
+               item.dateFin = '';
+             }
+
           
 
-          item.dateDebut = updateForm.querySelector('#date-beginning-update').value;
-          item.dateFin = updateForm.querySelector('#date-end-update').value;
+          if(new Date(item.dateDebut).getTime()
+              >= new Date(item.dateFin).getTime()){
+              
+              item.dateDebut = '';
+              item.dateFin = '';
+
+              this.$buefy.notification.open({
+              duration: 3000,
+              message: 'The ending date must come beyond the beginning date',
+              position: 'is-bottom',
+              type: 'is-light',
+              hasIcon: true
+            })
+
+          }
+      
+      /*
+      this.affiliation_update = {
+        organisation: '',
+        equipe: '',
+        dateDebut: '',
+        dateFin: '',
+        pays: ''
+      }*/
 
         //updateForm.classList.add("to-hide-aff-item");
       }
