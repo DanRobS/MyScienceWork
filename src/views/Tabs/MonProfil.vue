@@ -447,8 +447,18 @@ export default {
                   type: 'is-light',
                   hasIcon: true
                 })
-                } else {
-                  var newAffItem = {
+                } 
+                else if (new Date(this.newAffiliation.dateDebut).toLocaleDateString() >= 
+                     new Date(this.newAffiliation.dateFin).toLocaleDateString() ) {
+                  this.$buefy.notification.open({
+                  duration: 3000,
+                  message: 'Beginning date can\'t be beyond ending date',
+                  position: 'is-bottom',
+                  type: 'is-light',
+                  hasIcon: true
+                })
+              } else {
+                var newAffItem = {
                   organisation: this.newAffiliation.organisation,
                   equipe: this.newAffiliation.equipe,
                   dateDebut: new Date(this.newAffiliation.dateDebut).toLocaleDateString(),
