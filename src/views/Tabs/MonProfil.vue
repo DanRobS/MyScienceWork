@@ -21,7 +21,7 @@
     <div id="user-social-media">
       <b-field label="Social media ids">
         <b-input id="social_media_input" value="" placeholder="URL/username/id"></b-input>
-        <b-select id="social_media_select">
+        <b-select id="social_media_select" placeholder="Select a social media plateform">
           <option value="Facebook">Facebook</option>
           <option value="LinkedIn">LinkedIn</option>
           <option value="Twitter">Twitter</option>
