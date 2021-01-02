@@ -518,32 +518,60 @@ export default {
             type: 'is-light',
             hasIcon: true
           })
-      }
+      } else {
+          switch (soc_media) {
+            case 'Facebook':
+              this.social_media.facebook = soc_media_input;
+              document.getElementById("social_media_input")
+              .value='';
+              this.$buefy.notification.open({
+                duration: 3000,
+                message: 'Facebook link updated',
+                position: 'is-bottom',
+                type: 'is-light',
+                hasIcon: true
+              })
+              break;
 
-      switch (soc_media) {
-        case 'Facebook':
-          this.social_media.facebook = soc_media_input;
-          document.getElementById("social_media_input")
-          .value='';
-          break;
+            case 'LinkedIn':
+              this.social_media.linkedin = soc_media_input;
+              document.getElementById("social_media_input")
+              .value='';
+              this.$buefy.notification.open({
+                duration: 3000,
+                message: 'LinkedIn link updated',
+                position: 'is-bottom',
+                type: 'is-light',
+                hasIcon: true
+              })
+              break;
+          
+            case 'Twitter':
+              this.social_media.twitter = soc_media_input;
+              document.getElementById("social_media_input")
+              .value='';
+              this.$buefy.notification.open({
+                duration: 3000,
+                message: 'Twitter link updated',
+                position: 'is-bottom',
+                type: 'is-light',
+                hasIcon: true
+              })
+              break;
 
-        case 'LinkedIn':
-          this.social_media.linkedin = soc_media_input;
-          document.getElementById("social_media_input")
-          .value='';
-          break;
-      
-        case 'Twitter':
-          this.social_media.twitter = soc_media_input;
-          document.getElementById("social_media_input")
-          .value='';
-          break;
-
-        case 'Orcid':
-          this.social_media.orcid = soc_media_input;
-          document.getElementById("social_media_input")
-          .value='';
-          break;
+            case 'Orcid':
+              this.social_media.orcid = soc_media_input;
+              document.getElementById("social_media_input")
+              .value='';
+              this.$buefy.notification.open({
+                duration: 3000,
+                message: 'Orcid link updated',
+                position: 'is-bottom',
+                type: 'is-light',
+                hasIcon: true
+              })
+              break;
+          }
       }
     },
     removeSocialMedia: function() {
