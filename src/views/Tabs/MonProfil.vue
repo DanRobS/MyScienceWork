@@ -1,6 +1,8 @@
 <template>
   <div class="monProfil">
 
+
+    <!-- NOM PRENOM ABOUT SECTION -->
     <div id="user-infos-fields">
       <b-field label="Prénom">
         <b-input value=""></b-input>
@@ -18,6 +20,7 @@
 
     <hr>
 
+    <!-- SOCIAL MEDIA SECTION -->
     <div id="user-social-media">
       <b-field label="Social media ids">
         <b-input id="social_media_input" value="" placeholder="URL/username/id"></b-input>
@@ -64,8 +67,8 @@
 
     <hr>
 
+    <!-- AFFILIATION SECTION -->
     <div id="user-affiliation">
-
       <b-field>
         <button id="add-affiliation-button" 
           class="button is-primary is-focused is-medium"
@@ -363,6 +366,7 @@
             </b-select>
       </b-field>
 
+      <!-- Affiliation Items -->
       <ul id="affiliation-registered">
 
         <li v-for="item in affiliations" :key="item" class="columns aff-registered-item">
@@ -390,6 +394,7 @@
       
     </div>
     
+    <!-- AVATAR UPLOAD SECTION -->
     <div>
       <b-field class="upload-div">
             <b-upload v-model="dropFiles"
@@ -580,19 +585,49 @@ export default {
 
       switch (soc_media) {
         case 'Facebook':
+          console.log(this.social_media.facebook);
           this.social_media.facebook = '';
+          this.$buefy.notification.open({
+            duration: 3000,
+            message: 'Facebook link removed',
+            position: 'is-bottom',
+            type: 'is-light',
+            hasIcon: true
+          })
+          console.log(this.social_media.facebook);
           break;
 
         case 'LinkedIn':
           this.social_media.linkedin = '';
+          this.$buefy.notification.open({
+            duration: 3000,
+            message: 'LinkedIn link removed',
+            position: 'is-bottom',
+            type: 'is-light',
+            hasIcon: true
+          })
           break;
       
         case 'Twitter':
           this.social_media.twitter = '';
+          this.$buefy.notification.open({
+            duration: 3000,
+            message: 'Twitter link removed',
+            position: 'is-bottom',
+            type: 'is-light',
+            hasIcon: true
+          })
           break;
 
         case 'Orcid':
           this.social_media.orcid = '';
+          this.$buefy.notification.open({
+            duration: 3000,
+            message: 'Orcid link removed',
+            position: 'is-bottom',
+            type: 'is-light',
+            hasIcon: true
+          })
           break;
       }
     }
