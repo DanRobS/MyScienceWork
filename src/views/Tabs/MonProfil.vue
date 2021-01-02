@@ -819,10 +819,8 @@ export default {
     },
 
     updateAffiliation: function(item) {
-      console.log(item);
       var i = this.affiliations.indexOf(item);
       document.getElementsByClassName("updateForm")[i].classList.remove("to-hide-aff-item");
-      //console.log(document.getElementsByClassName("aff-registered-item"));
     },
 
     deleteAffiliation: function(item) {
@@ -904,53 +902,67 @@ export default {
       var soc_media = document.getElementById("social_media_select")
           .selectedOptions[0].value;
 
-      switch (soc_media) {
-        case 'Facebook':
-          console.log(this.social_media.facebook);
-          this.social_media.facebook = '';
-          this.$buefy.notification.open({
+      if(soc_media == ''){
+        this.$buefy.notification.open({
             duration: 3000,
-            message: 'Facebook link removed',
+            message: 'Select a social media plateform',
             position: 'is-bottom',
             type: 'is-light',
             hasIcon: true
           })
-          console.log(this.social_media.facebook);
-          break;
+      } else {
+        switch (soc_media) {
+          case 'Facebook':
+            console.log(this.social_media.facebook);
+            this.social_media.facebook = '';
+            this.$buefy.notification.open({
+              duration: 3000,
+              message: 'Facebook link removed',
+              position: 'is-bottom',
+              type: 'is-light',
+              hasIcon: true
+            })
+            break;
 
-        case 'LinkedIn':
-          this.social_media.linkedin = '';
-          this.$buefy.notification.open({
-            duration: 3000,
-            message: 'LinkedIn link removed',
-            position: 'is-bottom',
-            type: 'is-light',
-            hasIcon: true
-          })
-          break;
-      
-        case 'Twitter':
-          this.social_media.twitter = '';
-          this.$buefy.notification.open({
-            duration: 3000,
-            message: 'Twitter link removed',
-            position: 'is-bottom',
-            type: 'is-light',
-            hasIcon: true
-          })
-          break;
+          case 'LinkedIn':
+            this.social_media.linkedin = '';
+            this.$buefy.notification.open({
+              duration: 3000,
+              message: 'LinkedIn link removed',
+              position: 'is-bottom',
+              type: 'is-light',
+              hasIcon: true
+            })
+            break;
+        
+          case 'Twitter':
+            this.social_media.twitter = '';
+            this.$buefy.notification.open({
+              duration: 3000,
+              message: 'Twitter link removed',
+              position: 'is-bottom',
+              type: 'is-light',
+              hasIcon: true
+            })
+            break;
 
-        case 'Orcid':
-          this.social_media.orcid = '';
-          this.$buefy.notification.open({
-            duration: 3000,
-            message: 'Orcid link removed',
-            position: 'is-bottom',
-            type: 'is-light',
-            hasIcon: true
-          })
-          break;
+          case 'Orcid':
+            this.social_media.orcid = '';
+            this.$buefy.notification.open({
+              duration: 3000,
+              message: 'Orcid link removed',
+              position: 'is-bottom',
+              type: 'is-light',
+              hasIcon: true
+            })
+            break;
+        }
       }
+
+      
+    },
+    registerUpdade: function () {
+
     },
     cancelUpdate: function(item) {
       var i = this.affiliations.indexOf(item);
