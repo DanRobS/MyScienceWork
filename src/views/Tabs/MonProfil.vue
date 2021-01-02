@@ -437,21 +437,35 @@ export default {
     addAffiliation: function() {
       if (this.newAffiliation.organisation != '' 
           && this.newAffiliation.pays != '') {
-          var newAffItem = {
-            organisation: this.newAffiliation.organisation,
-            equipe: this.newAffiliation.equipe,
-            dateDebut: new Date(this.newAffiliation.dateDebut).toLocaleDateString(),
-            dateFin: new Date(this.newAffiliation.dateFin).toLocaleDateString(),
-            pays: this.newAffiliation.pays
-          }
-          
-          this.affiliations.push(newAffItem);
 
-          this.newAffiliation.organisation = '';
-              this.newAffiliation.equipe = '';
-              this.newAffiliation.dateDebut = '';
-              this.newAffiliation.dateFin = '';
-              this.newAffiliation.pays = '';
+            if(new Date(this.newAffiliation.dateDebut).toLocaleDateString() === 'Invalid Date'
+                && new Date(this.newAffiliation.dateFin).toLocaleDateString() != 'Invalid Date') {
+                  this.$buefy.notification.open({
+                  duration: 3000,
+                  message: 'Can\'t have an ending date without a beginning date',
+                  position: 'is-bottom',
+                  type: 'is-light',
+                  hasIcon: true
+                })
+                } else {
+                  var newAffItem = {
+                  organisation: this.newAffiliation.organisation,
+                  equipe: this.newAffiliation.equipe,
+                  dateDebut: new Date(this.newAffiliation.dateDebut).toLocaleDateString(),
+                  dateFin: new Date(this.newAffiliation.dateFin).toLocaleDateString(),
+                  pays: this.newAffiliation.pays
+                }
+                
+                this.affiliations.push(newAffItem);
+
+                this.newAffiliation = {
+                  organisation: '',
+                  equipe: '',
+                  dateDebut: '',
+                  dateFin: '',
+                  pays: ''
+                }
+              }
         } else {
         this.$buefy.notification.open({
             duration: 3000,
