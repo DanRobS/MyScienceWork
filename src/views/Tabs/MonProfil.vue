@@ -393,10 +393,8 @@
                   Annuler
                 </button>    
               </p>
-              <b-field label="Organisation"
-                :label-position="labelPosition">
-                <b-select id="organisation-field-update"
-                          v-model="newAffiliation.organisation">
+              <b-field label="Organisation">
+                <b-select id="organisation-field-update">
                   <option disabled value="">Select an organisation</option>
                   <option value="Option 1">Option 1</option>
                   <option value="Option 2">Option 2</option>
@@ -404,14 +402,12 @@
               </b-field>
 
               <b-field label="Equipe">
-                <b-input id="team-field-update"
-                          v-model="newAffiliation.equipe"></b-input>
+                <b-input id="team-field-update"></b-input>
               </b-field>
 
               <div id="dates" class="">
                 <b-field label="Durée" class="">
-                  <b-datepicker
-                    v-model="newAffiliation.dateDebut" 
+                  <b-datepicker 
                     id="date-beginning-update"
                     placeholder="Date de début"
                     icon="calendar-today"
@@ -419,7 +415,6 @@
                     editable>
                   </b-datepicker>
                   <b-datepicker
-                    v-model="newAffiliation.dateFin"
                     id="date-end-update"
                     placeholder="Date de fin"
                     icon="calendar-today"
@@ -430,8 +425,7 @@
               </div>
 
               <b-field label="Pays">
-                    <b-select id="country-update"
-                              v-model="newAffiliation.pays">
+                    <b-select id="country-update">
                       <option disabled value="">Select a country</option>
                       <option value="Afganistan">Afghanistan</option>
                       <option value="Albania">Albania</option>
@@ -744,6 +738,13 @@ export default {
         dateFin: '',
         pays: ''
       },
+      affiliation_update: {
+        organisation: '',
+        equipe: '',
+        dateDebut: '',
+        dateFin: '',
+        pays: ''
+      },
       affiliations: [
         {
           organisation: 'Organisation 1',
@@ -763,6 +764,7 @@ export default {
     }
   },
   methods: {
+    //AFFILIATION METHODS
     addAffiliation: function() {
       if (this.newAffiliation.organisation != '' 
           && this.newAffiliation.pays != '') {
@@ -825,6 +827,8 @@ export default {
         var i = this.affiliations.indexOf(item);
         this.affiliations.splice(i, 1);
     },
+
+    //SOCIAL MEDIA METHODS
     addSocialMedia: function() {
       var soc_media = document.getElementById("social_media_select")
           .selectedOptions[0].value;
@@ -959,20 +963,59 @@ export default {
 
       
     },
+
+    //AFFILIATION UPDATE METHODS
     registerUpdate: function (item) {
       var i = this.affiliations.indexOf(item);
       
       var updateForm = document.getElementsByClassName("updateForm")[i];
 
-      item.organisation = updateForm.querySelector('#organisation-field-update').selectedOptions[0].value;
-      item.equipe = updateForm.querySelector('#team-field-update').value;
-      item.dateDebut = updateForm.querySelector('#date-beginning-update').value;
-      item.dateFin = updateForm.querySelector('#date-end-update').value;
-      item.pays = updateForm.querySelector('#country-update').selectedOptions[0].value;
+      var value1 = updateForm.querySelector('#organisation-field-update').selectedIndex;
+      var value2 = updateForm.querySelector('#country-update').selectedIndex;
+
+      //IF THE UPDATE FORM IS EMPTY
+      
+      if(value1==-1
+        && updateForm.querySelector('#team-field-update').value==''
+        && updateForm.querySelector('#date-beginning-update').value==''
+        && updateForm.querySelector('#date-end-update').value==''
+        && value2==-1){
+          this.$buefy.notification.open({
+            duration: 3000,
+            message: 'You must update a field or cancel the update',
+            position: 'is-bottom',
+            type: 'is-light',
+            hasIcon: true
+          })
+      } else {//IF AT LEAST ONE FIELD IS FILLED / SELECTED
+          if(item.organisation !=
+             updateForm.querySelector('#organisation-field-update')[value1].value){
+               item.organisation = 
+               updateForm.querySelector('#organisation-field-update')[value1].value;
+             }
+          
+          if(item.equipe != 
+             updateForm.querySelector('#team-field-update').value){
+               item.equipe = 
+               updateForm.querySelector('#team-field-update').value;
+             }
+
+          if(item.organisation !=
+             updateForm.querySelector('#country-update')[value2].value){
+               item.organisation = 
+               updateForm.querySelector('#country-update')[value2].value;
+             }
+          
+          
+
+          item.dateDebut = updateForm.querySelector('#date-beginning-update').value;
+          item.dateFin = updateForm.querySelector('#date-end-update').value;
+
+        //updateForm.classList.add("to-hide-aff-item");
+      }
       
       
 
-      updateForm.classList.add("to-hide-aff-item");
     },
     cancelUpdate: function(item) {
       var i = this.affiliations.indexOf(item);
