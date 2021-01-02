@@ -1,8 +1,9 @@
 <template>
   <div class="monProfil">
 
-
+    <!-- ######################## -->
     <!-- NOM PRENOM ABOUT SECTION -->
+    <!-- ######################## -->
     <div id="user-infos-fields">
       <b-field label="Prénom">
         <b-input value=""></b-input>
@@ -20,7 +21,9 @@
 
     <hr>
 
+    <!-- #################### -->
     <!-- SOCIAL MEDIA SECTION -->
+    <!-- #################### -->
     <div id="user-social-media">
       <b-field label="Social media ids">
         <b-input id="social_media_input" value="" placeholder="URL/username/id"></b-input>
@@ -67,7 +70,9 @@
 
     <hr>
 
+    <!-- ################### -->
     <!-- AFFILIATION SECTION -->
+    <!-- ################### -->
     <div id="user-affiliation">
       <b-field>
         <button id="add-affiliation-button" 
@@ -367,6 +372,7 @@
       </b-field>
 
       <!-- Affiliation Items -->
+      <!-- ################# -->
       <ul id="affiliation-registered">
 
         <li v-for="item in affiliations" :key="item" class="columns aff-registered-item">
@@ -394,7 +400,9 @@
       
     </div>
     
+    <!-- ##################### -->
     <!-- AVATAR UPLOAD SECTION -->
+    <!-- ##################### -->
     <div>
       <b-field class="upload-div">
             <b-upload v-model="dropFiles"
