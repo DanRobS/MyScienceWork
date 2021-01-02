@@ -21,7 +21,8 @@
     <div id="user-social-media">
       <b-field label="Social media ids">
         <b-input id="social_media_input" value="" placeholder="URL/username/id"></b-input>
-        <b-select id="social_media_select" placeholder="Select a social media plateform">
+        <b-select class="to-hide-mobile" id="social_media_select" 
+                  placeholder="Select a social media plateform">
           <option value="Facebook">Facebook</option>
           <option value="LinkedIn">LinkedIn</option>
           <option value="Twitter">Twitter</option>
@@ -41,6 +42,13 @@
         </div>
       </b-field>
       <div class="to-hide-laptop">
+        <b-select id="social_media_select" 
+                  placeholder="Select a social media plateform">
+          <option value="Facebook">Facebook</option>
+          <option value="LinkedIn">LinkedIn</option>
+          <option value="Twitter">Twitter</option>
+          <option value="Orcid">Orcid</option>
+        </b-select>
         <p class="control buttons">
           <button @click="addSocialMedia" class="button is-primary is-focused">
             <font-awesome-icon :icon="['fas', 'plus']" size="2x"
@@ -410,10 +418,10 @@ export default {
   data: () => {
     return {
       social_media: {
-        facebook: '',
-        linkedin: '',
-        twitter: '',
-        orcid: ''
+        facebook: 'fbk',
+        linkedin: 'insta',
+        twitter: 'twt',
+        orcid: 'orc'
       },
       newAffiliation: {
         organisation: '',
@@ -498,6 +506,7 @@ export default {
     addSocialMedia: function() {
       var soc_media = document.getElementById("social_media_select")
           .selectedOptions[0].value;
+          
       var soc_media_input = document.getElementById("social_media_input")
           .value;
 
