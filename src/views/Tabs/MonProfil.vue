@@ -385,16 +385,14 @@
           </div>
           <div class="column">
             <div class="updateForm to-hide-aff-item">
-              <b-field>
-                <button id="add-affiliation-button" 
-                  class="button is-primary is-focused is-medium"
-                  @click="registerUpdate(item)">
-                Enregistrer</button>
-                <button id="add-affiliation-button" 
-                  class="button is-primary is-focused is-medium"
-                  @click="cancelUpdate(item)">
-                Cancel</button>
-              </b-field>
+              <p class="control buttons">
+                <button @click="registerUpdate(item)" class="button is-primary is-focused">
+                  Enregistrer
+                </button>
+                <button @click="cancelUpdate(item)" class="button is-primary is-focused">
+                  Annuler
+                </button>    
+              </p>
             <b-field label="Organisation"
               :label-position="labelPosition">
               <b-select id="organisation-field"
@@ -961,8 +959,9 @@ export default {
 
       
     },
-    registerUpdade: function () {
-
+    registerUpdate: function (item) {
+      var i = this.affiliations.indexOf(item);
+      document.getElementsByClassName("updateForm")[i].classList.add("to-hide-aff-item");
     },
     cancelUpdate: function(item) {
       var i = this.affiliations.indexOf(item);
