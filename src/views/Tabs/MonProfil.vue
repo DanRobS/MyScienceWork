@@ -751,9 +751,6 @@ export default {
         dateFin: '',
         pays: ''
       },
-      affiliations: [
-        
-      ]
     }
   },
   methods: {
@@ -807,8 +804,6 @@ export default {
                 
                 this.$store.commit('addAffiliation',newAffItem);
 
-                this.affiliations.push(newAffItem);
-
                 this.newAffiliation = {
                   organisation: '',
                   equipe: '',
@@ -834,8 +829,8 @@ export default {
     },
 
     deleteAffiliation: function(item) {
-        var i = this.affiliations.indexOf(item);
-        this.affiliations.splice(i, 1);
+        var i = this.$store.state.user.affiliations.indexOf(item);
+        this.$store.state.user.affiliations.splice(i, 1);
     },
 
     //SOCIAL MEDIA METHODS
