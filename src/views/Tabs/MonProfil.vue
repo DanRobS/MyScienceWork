@@ -388,6 +388,8 @@
             <p v-else class="aff-dates">{{item.dateDebut}} - {{item.dateFin}}</p>
             <p class="aff-pays">{{item.pays}}</p>
           </div>
+
+          <!-- UPDATE ITEM FORM -->
           <div class="column">
             <div class="updateForm to-hide-aff-item">
               <p class="control buttons">
