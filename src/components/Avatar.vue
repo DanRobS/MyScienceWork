@@ -85,7 +85,7 @@ export default {
 }
 
 .social-media {
-  padding-right: 50%;
+  padding-right: 30%;
 }
 
 .social-media-link {
@@ -120,6 +120,10 @@ export default {
     border-width: 2px;
     margin-bottom: 10%;
     padding-top: 2%;
+  }
+
+  .social-media {
+    padding-right: 0%;
   }
   
 } 
