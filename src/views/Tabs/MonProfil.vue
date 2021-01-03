@@ -733,10 +733,10 @@ export default {
   data: () => {
     return {
       social_media: {
-        facebook: 'fbk',
-        linkedin: 'insta',
-        twitter: 'twt',
-        orcid: 'orc'
+        facebook: '',
+        linkedin: '',
+        twitter: '',
+        orcid: ''
       },
       newAffiliation: {
         organisation: '',
