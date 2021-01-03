@@ -1043,14 +1043,9 @@ export default {
               type: 'is-light',
               hasIcon: true
             })
-
           }
-      
         updateForm.classList.add("to-hide-aff-item");
       }
-      
-      
-
     },
     cancelUpdate: function(item) {
       var i = this.$store.state.user.affiliations.indexOf(item);

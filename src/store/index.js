@@ -21,16 +21,34 @@ export default new Vuex.Store({
       },
       affiliations: [
         {
-          organisation: 'Store 1',
-          equipe: 'Equipe Store 1',
+          organisation: 'Commissariat à l\'énergie atomique',
+          equipe: 'Equipe de recherche en fission nucléaire',
           dateDebut: '01/06/2020',
-          dateFin: '02/07/2021',
-          pays: 'Namek',
+          dateFin: '',
+          pays: 'France',
         }
       ],
-      user_publications: {
-
-      }
+      publications: [
+        {
+          titre: 'Radioactive materials and their effects to health',
+          auteurs: [
+            'Hugh Généreux',
+            'Frank Martin'
+          ],
+          annee: '2016',
+          langue: 'ENG'
+        },
+        {
+          titre: 'La fission nucléaire expliquée par l\'exemple',
+          auteurs: [
+            'Hugh Généreux',
+            'Frank Martin',
+            'Selena Smith'
+          ],
+          annee: '2016',
+          langue: 'FR'
+        }
+      ]
     }
   },
   
@@ -45,7 +63,7 @@ export default new Vuex.Store({
       if(payload.about!='')
       state.user.infos.about = payload.about;
     },
-    
+
     addAffiliation (state, payload) {
       state.user.affiliations.push(payload);
     }

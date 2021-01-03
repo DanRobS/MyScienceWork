@@ -2,20 +2,13 @@
   <div class="General">
 
     <ul id="affiliations">
-      <li class="affiliation-item">
-        <p class="affiliation-name">Commissariat à l'énergie atomique</p>
-        <p class="affiliation-role">Chercheur post-doctoral</p>
-        <p class="affiliation-team">Equipe de recherche en fission nucléaire</p>
-        <p class="affiliation-date">Depuis 2017</p>
-        <p class="affiliation-country">France</p>
-      </li>
-
-      <li class="affiliation-item">
-        <p class="affiliation-name">Idaho National Laboratory</p>
-        <p class="affiliation-role">Doctorant</p>
-        <p class="affiliation-team">Research team on radioactive materials</p>
-        <p class="affiliation-date">2011 - 2016</p>
-        <p class="affiliation-country">Etats-Unis</p>
+      <li v-for="item in $store.state.user.affiliations" :key="item" class="affiliation-item">
+        <p class="affiliation-name"> {{ item.organisation }} </p>
+        <!--<p class="affiliation-role"> {{ item.role }} </p>-->
+        <p class="affiliation-team"> {{ item.equipe }} </p>
+        <p v-if="item.dateDebut != '' && item.dateFin == ''" class="affiliation-date"> Depuis {{item.dateDebut}} </p>
+        <p v-else class="affiliation-date"> {{item.dateDebut}} - {{item.dateFin}} </p>
+        <p class="affiliation-country"> {{item.pays}} </p>
       </li>
     </ul>
     

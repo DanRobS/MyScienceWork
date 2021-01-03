@@ -17,20 +17,11 @@
     </div>
 
     <ul id="publication-list">
-      <li class="publication">
+      <li v-for="item in $store.state.user.publications" :key="item" class="publication">
         <p class="publication-infos">
-          <span class="pub-authors">Hugh Généreux, Frank Martin</span>.
-          <span class="pub-date">2016</span>. 
-          <span class="pub-title">Radioactive
-          materials and their effects to health</span>.
-        </p>
-      </li>
-
-      <li class="publication">
-        <p class="publication-infos">
-          <span class="pub-authors">Hugh Généreux, Frank Martin, Selena Smith et al</span>.
-          <span class="pub-date">2015</span>. 
-          <span class="pub-title">La fission nucléaire expliquée par l'exemple</span>.
+          <span v-for="auteur in item.auteurs" :key="auteur" class="pub-authors"> {{ auteur }} - </span>
+          <span class="pub-date"> {{ item.annee }}. </span> 
+          <span class="pub-title"> {{ item.titre }}. </span>
         </p>
       </li>
     </ul>
