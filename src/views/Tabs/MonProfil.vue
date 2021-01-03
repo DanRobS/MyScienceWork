@@ -1057,7 +1057,7 @@ export default {
         pays: ''
       }*/
 
-        //updateForm.classList.add("to-hide-aff-item");
+        updateForm.classList.add("to-hide-aff-item");
       }
       
       
