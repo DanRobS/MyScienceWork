@@ -21,17 +21,22 @@ export default new Vuex.Store({
       },
       affiliations: [
 
-      ]/*,
+      ],
       user_publications: {
 
-      }*/
+      }
     }
   },
   
   mutations: {
     updateUserInfos (state, payload) {
+      if(payload.nom!='')
       state.user.infos.nom = payload.nom;
+
+      if(payload.prenom!='')
       state.user.infos.prenom = payload.prenom;
+      
+      if(payload.about!='')
       state.user.infos.about = payload.about;
     }
   },
