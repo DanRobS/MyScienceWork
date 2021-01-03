@@ -1001,49 +1001,87 @@ export default {
             hasIcon: true
           })
       } else {//IF AT LEAST ONE FIELD IS FILLED / SELECTED
+
+          //UPDATING ORGANISATION
           if(value1 != -1 &&
             item.organisation !=
              updateForm.querySelector('#organisation-field-update')[value1].value){
-               item.organisation = 
-               updateForm.querySelector('#organisation-field-update')[value1].value;
+               this.$store.commit('updateAffiliation',
+               {
+                 field: 'organisation',
+                 index: i,
+                 value: updateForm.querySelector('#organisation-field-update')[value1].value
+               }); 
+              
              }
           
+          //UPDATING EQUIPE
           if(updateForm.querySelector('#team-field-update').value != '' &&
             item.equipe != 
              updateForm.querySelector('#team-field-update').value){
-               item.equipe = 
-               updateForm.querySelector('#team-field-update').value;
+               this.$store.commit('updateAffiliation',
+               {
+                 field: 'equipe',
+                 index: i,
+                 value: updateForm.querySelector('#team-field-update').value
+               }); 
+               
              }
 
+          //UPDATING PAYS
           if(value2 != -1 &&
             item.pays !=
              updateForm.querySelector('#country-update')[value2].value){
-               item.pays = 
-               updateForm.querySelector('#country-update')[value2].value;
+               this.$store.commit('updateAffiliation',
+               {
+                 field: 'pays',
+                 index: i,
+                 value: updateForm.querySelector('#country-update')[value2].value
+               }); 
+               
              }
           
+          //UPDATING DATE DEBUT
           if(updateForm.querySelector('#date-beginning-update').value != '' &&
             item.dateDebut != 
              updateForm.querySelector('#date-beginning-update').value){
-               item.dateDebut = 
-               updateForm.querySelector('#date-beginning-update').value;
+               this.$store.commit('updateAffiliation',
+               {
+                 field: 'dateDebut',
+                 index: i,
+                 value: updateForm.querySelector('#date-beginning-update').value
+               }); 
+               
              }
 
+          //UPDATING DATE FIN
           if(updateForm.querySelector('#date-end-update').value != '' &&
             item.dateFin != 
              updateForm.querySelector('#date-end-update').value){
-               item.dateFin = 
-               updateForm.querySelector('#date-end-update').value;
-             } 
-             /*else if (updateForm.querySelector('#date-end-update').value==''){
-               item.dateFin = '';
-             }*/
+               this.$store.commit('updateAffiliation',
+               {
+                 field: 'dateFin',
+                 index: i,
+                 value: updateForm.querySelector('#date-end-update').value
+               }); 
+               
+             }
 
           if(new Date(item.dateDebut).getTime()
               >= new Date(item.dateFin).getTime()){
               
-              item.dateDebut = '';
-              item.dateFin = '';
+              this.$store.commit('updateAffiliation',
+               {
+                 field: 'dateDebut',
+                 index: i,
+                 value: ''
+               }); 
+              this.$store.commit('updateAffiliation',
+               {
+                 field: 'dateFin',
+                 index: i,
+                 value: ''
+               });
 
               this.$buefy.notification.open({
               duration: 3000,
@@ -1054,6 +1092,14 @@ export default {
             })
           }
         updateForm.classList.add("to-hide-aff-item");
+
+        updateForm.querySelector('#organisation-field-update')[value1].value = '';
+        //updateForm.querySelector('#team-field-update').value = '';
+        updateForm.querySelector('#country-update')[value2].value = '';
+        //updateForm.querySelector('#date-beginning-update').value = '';
+        //updateForm.querySelector('#date-end-update').value ='';
+
+        
       }
     },
     cancelUpdate: function(item) {

@@ -99,7 +99,23 @@ export default new Vuex.Store({
     deleteAffiliation (state, payload) {
       state.user.affiliations.splice(payload, 1);
     },
+
+    updateAffiliation (state, payload) {
+      if(payload.field=='organisation')
+      state.user.affiliations[payload.index].organisation = payload.value;
+      
+      if(payload.field=='equipe')
+      state.user.affiliations[payload.index].equipe = payload.value;
+
+      if(payload.field=='pays')
+      state.user.affiliations[payload.index].pays = payload.value;
+
+      if(payload.field=='dateDebut')
+      state.user.affiliations[payload.index].dateDebut = payload.value;
     
+      if(payload.field=='dateFin')
+      state.user.affiliations[payload.index].dateFin = payload.value;
+    }
   },
   
   actions: {
