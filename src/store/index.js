@@ -98,7 +98,8 @@ export default new Vuex.Store({
 
     deleteAffiliation (state, payload) {
       state.user.affiliations.splice(payload, 1);
-    }
+    },
+    
   },
   
   actions: {

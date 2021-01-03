@@ -830,16 +830,11 @@ export default {
 
     deleteAffiliation: function(item) {
         var i = this.$store.state.user.affiliations.indexOf(item);
-        this.$store.state.user.affiliations.splice(i, 1);
+        this.$store.commit('deleteAffiliation', i);
     },
 
     //SOCIAL MEDIA METHODS
     addSocialMedia: function() {
-      var soc_media = document.getElementById("social_media_select")
-          .selectedOptions[0].value;
-          
-      //var soc_media_input = document.getElementById("social_media_input")
-        //  .value;
 
       if(this.social_media_id == ''){
         this.$buefy.notification.open({
@@ -850,11 +845,11 @@ export default {
             hasIcon: true
           })
       } else {
-          switch (soc_media) {
+          switch (this.social_media_id) {
             case 'Facebook':
               this.$store.commit('addSocialMedia',
               {
-                social_media: soc_media,
+                social_media: this.social_media_id,
                 identifier: this.social_media_id
               });
               this.social_media_id='';
@@ -870,7 +865,7 @@ export default {
             case 'LinkedIn':
               this.$store.commit('addSocialMedia',
               {
-                social_media: soc_media,
+                social_media: this.social_media_id,
                 identifier: this.social_media_id
               });
               this.social_media_id='';
@@ -886,7 +881,7 @@ export default {
             case 'Twitter':
               this.$store.commit('addSocialMedia',
               {
-                social_media: soc_media,
+                social_media: this.social_media_id,
                 identifier: this.social_media_id
               });
               this.social_media_id='';
@@ -902,7 +897,7 @@ export default {
             case 'Orcid':
               this.$store.commit('addSocialMedia',
               {
-                social_media: soc_media,
+                social_media: this.social_media_id,
                 identifier: this.social_media_id
               });
               this.social_media_id='';
@@ -920,6 +915,15 @@ export default {
     },
     removeSocialMedia: function() {
 
+      if(this.social_media_id == ''){
+        this.$buefy.notification.open({
+            duration: 3000,
+            message: 'Select a social media URL/Username/Id',
+            position: 'is-bottom',
+            type: 'is-light',
+            hasIcon: true
+          })
+      } else {
         switch (this.social_media_id) {
           case 'Facebook':
             this.$store.commit('removeSocialMedia', this.social_media_id);
@@ -965,6 +969,9 @@ export default {
             })
             break;
         }
+      }
+
+        
       
 
       
