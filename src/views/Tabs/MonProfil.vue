@@ -17,6 +17,11 @@
         :label-position="labelPosition">
         <b-input maxlength="200" type="textarea"></b-input>
       </b-field>
+      <p class="control buttons">
+        <button class="button is-primary is-focused is-medium">
+          Enregistrer
+        </button>
+      </p>
     </div>
 
     <hr>
