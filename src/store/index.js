@@ -81,7 +81,7 @@ export default new Vuex.Store({
       if(payload.social_media=='Orcid')
       state.user.social_media.orcid = payload.identifier;
     },
-    
+
     removeSocialMedia (state, payload) {
       if(payload=='Facebook')
       state.user.social_media.facebook = '';  
@@ -94,6 +94,10 @@ export default new Vuex.Store({
 
       if(payload=='Orcid')
       state.user.social_media.orcid = '';
+    },
+
+    deleteAffiliation (state, payload) {
+      state.user.affiliations.splice(payload, 1);
     }
   },
   
