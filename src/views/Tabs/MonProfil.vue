@@ -920,7 +920,7 @@ export default {
         switch (soc_media) {
           case 'Facebook':
             console.log(this.social_media.facebook);
-            this.social_media.facebook = '';
+            this.$store.state.user.social_media.facebook = '';
             this.$buefy.notification.open({
               duration: 3000,
               message: 'Facebook link removed',
@@ -931,7 +931,7 @@ export default {
             break;
 
           case 'LinkedIn':
-            this.social_media.linkedin = '';
+            this.$store.state.user.social_media.linkedin = '';
             this.$buefy.notification.open({
               duration: 3000,
               message: 'LinkedIn link removed',
@@ -942,7 +942,7 @@ export default {
             break;
         
           case 'Twitter':
-            this.social_media.twitter = '';
+            this.$store.state.user.social_media.twitter = '';
             this.$buefy.notification.open({
               duration: 3000,
               message: 'Twitter link removed',
@@ -953,7 +953,7 @@ export default {
             break;
 
           case 'Orcid':
-            this.social_media.orcid = '';
+            this.$store.state.user.social_media.orcid = '';
             this.$buefy.notification.open({
               duration: 3000,
               message: 'Orcid link removed',
