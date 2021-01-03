@@ -11,12 +11,13 @@
     </div>
 
     <p id="name">
-      Names
+      {{ $store.state.user.infos.prenom }}
+      {{ $store.state.user.infos.nom }}
     </p>
 
     <p class="Titles">About</p>
       <p id="about-text" class="has-text-justified">
-         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+         {{ $store.state.user.infos.about }}
       </p>
 
     <p class="Titles">Social media</p>

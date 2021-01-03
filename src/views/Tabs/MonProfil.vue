@@ -6,19 +6,20 @@
     <!-- ######################## -->
     <div id="user-infos-fields">
       <b-field label="Prénom">
-        <b-input value=""></b-input>
+        <b-input v-model="user_info.prenom"  value=""></b-input>
       </b-field>
 
       <b-field label="Nom">
-        <b-input value=""></b-input>
+        <b-input v-model="user_info.nom" value=""></b-input>
       </b-field>
 
       <b-field label="About"
         :label-position="labelPosition">
-        <b-input maxlength="200" type="textarea"></b-input>
+        <b-input v-model="user_info.about"
+         maxlength="200" type="textarea"></b-input>
       </b-field>
       <p class="control buttons">
-        <button class="button is-primary is-focused is-medium">
+        <button @click="updateUserInfos" type="submit" class="button is-primary is-focused is-medium">
           Enregistrer
         </button>
       </p>
@@ -732,6 +733,11 @@ export default {
   name: 'MonProfil',
   data: () => {
     return {
+      user_info: {
+        nom: '',
+        prenom: '',
+        about: ''
+      },
       social_media: {
         facebook: '',
         linkedin: '',
@@ -745,13 +751,6 @@ export default {
         dateFin: '',
         pays: ''
       },
-      affiliation_update: {
-        organisation: '',
-        equipe: '',
-        dateDebut: '',
-        dateFin: '',
-        pays: ''
-      },
       affiliations: [
         {
           organisation: 'Organisation 1',
@@ -759,18 +758,24 @@ export default {
           dateDebut: '01/06/2020',
           dateFin: '02/07/2021',
           pays: 'Gabon',
-        },
-        {
-          organisation: 'Organisation 2',
-          equipe: 'Equipe 2',
-          dateDebut: '01/06/2020',
-          dateFin: '02/07/2021',
-          pays: 'Angola',
         }
       ]
     }
   },
   methods: {
+    //USER INFO METHODS
+    updateUserInfos: function () {
+      
+      this.$store.commit('updateUserInfos',
+        this.user_info
+      )
+      this.user_info = {
+        nom: '',
+        prenom: '',
+        about: ''
+      }
+    },
+
     //AFFILIATION METHODS
     addAffiliation: function() {
       if (this.newAffiliation.organisation != '' 
