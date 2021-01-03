@@ -381,11 +381,11 @@
       <!-- ################# -->
       <ul id="affiliation-registered">
 
-        <li v-for="item in affiliations" :key="item" class="columns aff-registered-item">
+        <li v-for="item in $store.state.user.affiliations" :key="item" class="columns aff-registered-item">
           <div class="column">
             <p class="aff-org">{{item.organisation}}</p>
             <p class="aff-team">{{item.equipe}}</p>
-            <p v-if="item.dateDebut != '' && item.dateFin === 'Invalid Date'" class="aff-dates">Depuis {{item.dateDebut}}</p>
+            <p v-if="item.dateDebut != '' && item.dateFin == 'Invalid Date'" class="aff-dates">Depuis {{item.dateDebut}}</p>
             <p v-else class="aff-dates">{{item.dateDebut}} - {{item.dateFin}}</p>
             <p class="aff-pays">{{item.pays}}</p>
           </div>
@@ -752,13 +752,7 @@ export default {
         pays: ''
       },
       affiliations: [
-        {
-          organisation: 'Organisation 1',
-          equipe: 'Equipe 1',
-          dateDebut: '01/06/2020',
-          dateFin: '02/07/2021',
-          pays: 'Gabon',
-        }
+        
       ]
     }
   },
@@ -766,9 +760,7 @@ export default {
     //USER INFO METHODS
     updateUserInfos: function () {
       
-      this.$store.commit('updateUserInfos',
-        this.user_info
-      )
+      this.$store.commit('updateUserInfos', this.user_info)
       this.user_info = {
         nom: '',
         prenom: '',
@@ -781,8 +773,10 @@ export default {
       if (this.newAffiliation.organisation != '' 
           && this.newAffiliation.pays != '') {
 
-            if(new Date(this.newAffiliation.dateDebut).toLocaleDateString() === 'Invalid Date'
+            if(new Date(this.newAffiliation.dateDebut).toLocaleDateString() == 'Invalid Date'
                 && new Date(this.newAffiliation.dateFin).toLocaleDateString() != 'Invalid Date') {
+                  this.newAffiliation.dateDebut = '';
+                  this.newAffiliation.dateFin = '';
                   this.$buefy.notification.open({
                   duration: 3000,
                   message: 'Can\'t have an ending date without a beginning date',
@@ -791,8 +785,10 @@ export default {
                   hasIcon: true
                 })
                 } 
-                else if (new Date(this.newAffiliation.dateDebut).toLocaleDateString() >= 
-                     new Date(this.newAffiliation.dateFin).toLocaleDateString() ) {
+                else if (new Date(this.newAffiliation.dateDebut).getTime() >= 
+                     new Date(this.newAffiliation.dateFin).getTime() ) {
+                  this.newAffiliation.dateDebut = '';
+                  this.newAffiliation.dateFin = '';
                   this.$buefy.notification.open({
                   duration: 3000,
                   message: 'Beginning date can\'t be beyond ending date',
@@ -809,6 +805,8 @@ export default {
                   pays: this.newAffiliation.pays
                 }
                 
+                this.$store.commit('addAffiliation',newAffItem);
+
                 this.affiliations.push(newAffItem);
 
                 this.newAffiliation = {

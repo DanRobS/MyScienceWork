@@ -20,7 +20,13 @@ export default new Vuex.Store({
         orcid: ''
       },
       affiliations: [
-
+        {
+          organisation: 'Store 1',
+          equipe: 'Equipe Store 1',
+          dateDebut: '01/06/2020',
+          dateFin: '02/07/2021',
+          pays: 'Namek',
+        }
       ],
       user_publications: {
 
@@ -38,6 +44,10 @@ export default new Vuex.Store({
       
       if(payload.about!='')
       state.user.infos.about = payload.about;
+    },
+    
+    addAffiliation (state, payload) {
+      state.user.affiliations.push(payload);
     }
   },
   
