@@ -851,7 +851,7 @@ export default {
       } else {
           switch (soc_media) {
             case 'Facebook':
-              this.social_media.facebook = soc_media_input;
+              this.$store.state.user.social_media.facebook = soc_media_input;
               document.getElementById("social_media_input")
               .value='';
               this.$buefy.notification.open({
@@ -864,7 +864,7 @@ export default {
               break;
 
             case 'LinkedIn':
-              this.social_media.linkedin = soc_media_input;
+              this.$store.state.user.social_media.linkedin = soc_media_input;
               document.getElementById("social_media_input")
               .value='';
               this.$buefy.notification.open({
@@ -877,7 +877,7 @@ export default {
               break;
           
             case 'Twitter':
-              this.social_media.twitter = soc_media_input;
+              this.$store.state.user.social_media.twitter = soc_media_input;
               document.getElementById("social_media_input")
               .value='';
               this.$buefy.notification.open({
@@ -890,7 +890,7 @@ export default {
               break;
 
             case 'Orcid':
-              this.social_media.orcid = soc_media_input;
+              this.$store.state.user.social_media.orcid = soc_media_input;
               document.getElementById("social_media_input")
               .value='';
               this.$buefy.notification.open({

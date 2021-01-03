@@ -14,10 +14,10 @@ export default new Vuex.Store({
         about: ''
       },
       social_media: {
-        facebook: '',
-        linkedin: '',
-        twitter: '',
-        orcid: ''
+        facebook: 'Dan Rob Kunta',
+        linkedin: 'Dan Tsoumbou Moutimba',
+        twitter: 'DanRob95',
+        orcid: 'None'
       },
       affiliations: [
         {

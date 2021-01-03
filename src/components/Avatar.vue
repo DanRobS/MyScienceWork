@@ -23,36 +23,36 @@
     <p class="Titles">Social media</p>
     <div class="social-media is-mobile">
       <ul>
-        <li class="social-media-link">
+        <li v-if="$store.state.user.social_media.facebook !=''" class="social-media-link">
           <font-awesome-icon :icon="['fab', 'facebook-square']" size="2x"
           :style="{ color: '#3b5998' }"/>
-          <a href="https://facebook.com/" class="social-media-anchor">
-            Facebook  
-          </a>
+          <span href="https://facebook.com/" class="social-media-anchor">
+            {{ $store.state.user.social_media.facebook }}  
+          </span>
         </li>
         
-        <li class="social-media-link">
+        <li v-if="$store.state.user.social_media.linkedin !=''" class="social-media-link">
           <font-awesome-icon :icon="['fab', 'linkedin']" size="2x"
           :style="{ color: '#0e76a8' }"/>
-          <a href="https://linkedin.com/" class="social-media-anchor">
-            LinkedIn
-          </a>
+          <span href="https://linkedin.com/" class="social-media-anchor">
+            {{ $store.state.user.social_media.linkedin }}
+          </span>
         </li>
         
-        <li class="social-media-link">
+        <li v-if="$store.state.user.social_media.twitter !=''" class="social-media-link">
           <font-awesome-icon :icon="['fab', 'twitter']" size="2x"
             :style="{ color: '#00acee' }"/>
-          <a href="https://twitter.com/" class="social-media-anchor">
-            Twitter
-          </a>
+          <span href="https://twitter.com/" class="social-media-anchor">
+            {{ $store.state.user.social_media.twitter }}
+          </span>
         </li>
         
-        <li class="social-media-link">
+        <li v-if="$store.state.user.social_media.orcid !=''" class="social-media-link">
           <font-awesome-icon :icon="['fab', 'orcid']" size="2x"
             :style="{ color: '#a6ce39' }"/>
-          <a href="https://orcid.org/" class="social-media-anchor">
-            Orcid
-          </a>
+          <span href="https://orcid.org/" class="social-media-anchor">
+            {{ $store.state.user.social_media.orcid }}
+          </span>
         </li>
       </ul>
     </div>
