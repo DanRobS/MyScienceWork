@@ -66,6 +66,20 @@ export default new Vuex.Store({
 
     addAffiliation (state, payload) {
       state.user.affiliations.push(payload);
+    },
+
+    addSocialMedia (state, payload) {
+      if(payload.social_media=='Facebook')
+      state.user.social_media.facebook = payload.identifier;  
+    
+      if(payload.social_media=='LinkedIn')
+      state.user.social_media.linkedin = payload.identifier;
+    
+      if(payload.social_media=='Twitter')
+      state.user.social_media.twitter = payload.identifier;
+
+      if(payload.social_media=='Orcid')
+      state.user.social_media.orcid = payload.identifier;
     }
   },
   

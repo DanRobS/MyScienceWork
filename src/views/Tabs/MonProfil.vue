@@ -32,7 +32,7 @@
     <!-- #################### -->
     <div id="user-social-media">
       <b-field label="Social media ids">
-        <b-input id="social_media_input" value="" placeholder="URL/username/id"></b-input>
+        <b-input v-model="social_media_id" id="social_media_input" value="" placeholder="URL/username/id"></b-input>
         <b-select class="to-hide-mobile" id="social_media_select" 
                   placeholder="Select a social media plateform">
           <option value="Facebook">Facebook</option>
@@ -744,6 +744,7 @@ export default {
         twitter: '',
         orcid: ''
       },
+      social_media_id: '',
       newAffiliation: {
         organisation: '',
         equipe: '',
@@ -837,10 +838,10 @@ export default {
       var soc_media = document.getElementById("social_media_select")
           .selectedOptions[0].value;
           
-      var soc_media_input = document.getElementById("social_media_input")
-          .value;
+      //var soc_media_input = document.getElementById("social_media_input")
+        //  .value;
 
-      if(soc_media_input == ''){
+      if(this.social_media_id == ''){
         this.$buefy.notification.open({
             duration: 3000,
             message: 'Enter your social media URL/Username/Id',
@@ -851,9 +852,12 @@ export default {
       } else {
           switch (soc_media) {
             case 'Facebook':
-              this.$store.state.user.social_media.facebook = soc_media_input;
-              document.getElementById("social_media_input")
-              .value='';
+              this.$store.commit('addSocialMedia',
+              {
+                social_media: soc_media,
+                identifier: this.social_media_id
+              });
+              this.social_media_id='';
               this.$buefy.notification.open({
                 duration: 3000,
                 message: 'Facebook link updated',
@@ -864,9 +868,12 @@ export default {
               break;
 
             case 'LinkedIn':
-              this.$store.state.user.social_media.linkedin = soc_media_input;
-              document.getElementById("social_media_input")
-              .value='';
+              this.$store.commit('addSocialMedia',
+              {
+                social_media: soc_media,
+                identifier: this.social_media_id
+              });
+              this.social_media_id='';
               this.$buefy.notification.open({
                 duration: 3000,
                 message: 'LinkedIn link updated',
@@ -877,9 +884,12 @@ export default {
               break;
           
             case 'Twitter':
-              this.$store.state.user.social_media.twitter = soc_media_input;
-              document.getElementById("social_media_input")
-              .value='';
+              this.$store.commit('addSocialMedia',
+              {
+                social_media: soc_media,
+                identifier: this.social_media_id
+              });
+              this.social_media_id='';
               this.$buefy.notification.open({
                 duration: 3000,
                 message: 'Twitter link updated',
@@ -890,9 +900,12 @@ export default {
               break;
 
             case 'Orcid':
-              this.$store.state.user.social_media.orcid = soc_media_input;
-              document.getElementById("social_media_input")
-              .value='';
+              this.$store.commit('addSocialMedia',
+              {
+                social_media: soc_media,
+                identifier: this.social_media_id
+              });
+              this.social_media_id='';
               this.$buefy.notification.open({
                 duration: 3000,
                 message: 'Orcid link updated',
@@ -902,6 +915,7 @@ export default {
               })
               break;
           }
+          
       }
     },
     removeSocialMedia: function() {
