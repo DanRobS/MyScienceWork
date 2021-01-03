@@ -756,7 +756,6 @@ export default {
   methods: {
     //USER INFO METHODS
     updateUserInfos: function () {
-      
       this.$store.commit('updateUserInfos', this.user_info)
       this.user_info = {
         nom: '',
@@ -824,7 +823,7 @@ export default {
     },
 
     updateAffiliation: function(item) {
-      var i = this.affiliations.indexOf(item);
+      var i = this.$store.state.user.affiliations.indexOf(item);
       document.getElementsByClassName("updateForm")[i].classList.remove("to-hide-aff-item");
     },
 
@@ -1062,7 +1061,7 @@ export default {
 
     },
     cancelUpdate: function(item) {
-      var i = this.affiliations.indexOf(item);
+      var i = this.$store.state.user.affiliations.indexOf(item);
       document.getElementsByClassName("updateForm")[i].classList.add("to-hide-aff-item");
     }
   }
