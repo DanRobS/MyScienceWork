@@ -810,7 +810,7 @@ export default {
         } else {
         this.$buefy.notification.open({
             duration: 3000,
-            message: 'You must fill all fields',
+            message: 'You must fill the form',
             position: 'is-bottom',
             type: 'is-light',
             hasIcon: true
@@ -1020,11 +1020,10 @@ export default {
              updateForm.querySelector('#date-end-update').value){
                item.dateFin = 
                updateForm.querySelector('#date-end-update').value;
-             } else if (updateForm.querySelector('#date-end-update').value==''){
+             } 
+             /*else if (updateForm.querySelector('#date-end-update').value==''){
                item.dateFin = '';
-             }
-
-          
+             }*/
 
           if(new Date(item.dateDebut).getTime()
               >= new Date(item.dateFin).getTime()){
