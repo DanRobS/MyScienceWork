@@ -32,8 +32,8 @@
     <!-- #################### -->
     <div id="user-social-media">
       <b-field label="Social media ids">
-        <b-input v-model="social_media_id" id="social_media_input" value="" placeholder="URL/username/id"></b-input>
-        <b-select class="to-hide-mobile" id="social_media_select" 
+        <b-input  id="social_media_input" value="" placeholder="URL/username/id"></b-input>
+        <b-select v-model="social_media_id" class="to-hide-mobile" id="social_media_select" 
                   placeholder="Select a social media plateform">
           <option value="Facebook">Facebook</option>
           <option value="LinkedIn">LinkedIn</option>
@@ -919,22 +919,10 @@ export default {
       }
     },
     removeSocialMedia: function() {
-      var soc_media = document.getElementById("social_media_select")
-          .selectedOptions[0].value;
 
-      if(soc_media == ''){
-        this.$buefy.notification.open({
-            duration: 3000,
-            message: 'Select a social media plateform',
-            position: 'is-bottom',
-            type: 'is-light',
-            hasIcon: true
-          })
-      } else {
-        switch (soc_media) {
+        switch (this.social_media_id) {
           case 'Facebook':
-            console.log(this.social_media.facebook);
-            this.$store.state.user.social_media.facebook = '';
+            this.$store.commit('removeSocialMedia', this.social_media_id);
             this.$buefy.notification.open({
               duration: 3000,
               message: 'Facebook link removed',
@@ -945,7 +933,7 @@ export default {
             break;
 
           case 'LinkedIn':
-            this.$store.state.user.social_media.linkedin = '';
+            this.$store.commit('removeSocialMedia', this.social_media_id);
             this.$buefy.notification.open({
               duration: 3000,
               message: 'LinkedIn link removed',
@@ -956,7 +944,7 @@ export default {
             break;
         
           case 'Twitter':
-            this.$store.state.user.social_media.twitter = '';
+            this.$store.commit('removeSocialMedia', this.social_media_id);
             this.$buefy.notification.open({
               duration: 3000,
               message: 'Twitter link removed',
@@ -967,7 +955,7 @@ export default {
             break;
 
           case 'Orcid':
-            this.$store.state.user.social_media.orcid = '';
+            this.$store.commit('removeSocialMedia', this.social_media_id);
             this.$buefy.notification.open({
               duration: 3000,
               message: 'Orcid link removed',
@@ -977,7 +965,7 @@ export default {
             })
             break;
         }
-      }
+      
 
       
     },

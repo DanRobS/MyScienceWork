@@ -80,6 +80,20 @@ export default new Vuex.Store({
 
       if(payload.social_media=='Orcid')
       state.user.social_media.orcid = payload.identifier;
+    },
+    
+    removeSocialMedia (state, payload) {
+      if(payload=='Facebook')
+      state.user.social_media.facebook = '';  
+    
+      if(payload=='LinkedIn')
+      state.user.social_media.linkedin = '';
+    
+      if(payload=='Twitter')
+      state.user.social_media.twitter = '';
+
+      if(payload=='Orcid')
+      state.user.social_media.orcid = '';
     }
   },
   
