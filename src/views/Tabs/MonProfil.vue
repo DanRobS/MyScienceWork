@@ -970,10 +970,11 @@ export default {
 
     //AFFILIATION UPDATE METHODS
     registerUpdate: function (item) {
-      var i = this.affiliations.indexOf(item);
+      var i = this.$store.state.user.affiliations.indexOf(item);
       
       var updateForm = document.getElementsByClassName("updateForm")[i];
 
+      //INDEXES FOR SELECT OBJECTS
       var value1 = updateForm.querySelector('#organisation-field-update').selectedIndex;
       var value2 = updateForm.querySelector('#country-update').selectedIndex;
 
@@ -1045,15 +1046,6 @@ export default {
 
           }
       
-      /*
-      this.affiliation_update = {
-        organisation: '',
-        equipe: '',
-        dateDebut: '',
-        dateFin: '',
-        pays: ''
-      }*/
-
         updateForm.classList.add("to-hide-aff-item");
       }
       
