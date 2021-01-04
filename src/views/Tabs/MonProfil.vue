@@ -838,7 +838,7 @@ export default {
 
     deleteAffiliation: function(item) {
         var i = this.$store.state.user.affiliations.indexOf(item);
-        this.$store.commit('deleteAffiliation', i);
+        this.$store.dispatch('deleteAffiliation_action', i);
     },
 
     //SOCIAL MEDIA METHODS
