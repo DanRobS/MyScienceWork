@@ -121,6 +121,10 @@ export default new Vuex.Store({
   actions: {
     addSocialMedia_action (context, payload) {
       context.commit('addSocialMedia', payload);
+    },
+
+    removeSocialMedia_action (context, payload) {
+      context.commit('removeSocialMedia', payload);
     }
   },
   

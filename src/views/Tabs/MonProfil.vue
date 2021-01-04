@@ -926,7 +926,7 @@ export default {
       } else {
         switch (this.social_media_id) {
           case 'Facebook':
-            this.$store.commit('removeSocialMedia', this.social_media_id);
+            this.$store.dispatch('removeSocialMedia_action', this.social_media_id);
             this.$buefy.notification.open({
               duration: 3000,
               message: 'Facebook link removed',
@@ -937,7 +937,7 @@ export default {
             break;
 
           case 'LinkedIn':
-            this.$store.commit('removeSocialMedia', this.social_media_id);
+            this.$store.dispatch('removeSocialMedia_action', this.social_media_id);
             this.$buefy.notification.open({
               duration: 3000,
               message: 'LinkedIn link removed',
@@ -948,7 +948,7 @@ export default {
             break;
         
           case 'Twitter':
-            this.$store.commit('removeSocialMedia', this.social_media_id);
+            this.$store.dispatch('removeSocialMedia_action', this.social_media_id);
             this.$buefy.notification.open({
               duration: 3000,
               message: 'Twitter link removed',
@@ -959,7 +959,7 @@ export default {
             break;
 
           case 'Orcid':
-            this.$store.commit('removeSocialMedia', this.social_media_id);
+            this.$store.dispatch('removeSocialMedia_action', this.social_media_id);
             this.$buefy.notification.open({
               duration: 3000,
               message: 'Orcid link removed',
