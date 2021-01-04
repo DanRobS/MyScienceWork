@@ -390,6 +390,19 @@
             <p class="aff-pays">{{item.pays}}</p>
           </div>
 
+          
+          <div class="column">
+              <span class="icon update-delete-icons"
+                @click="updateAffiliation(item)">
+                <font-awesome-icon :icon="['fas', 'pen']"/>
+              </span>
+              |
+              <span id="delete-button" class="icon update-delete-icons"
+                @click="deleteAffiliation(item)">
+                <font-awesome-icon :icon="['fas', 'trash-alt']"/>
+              </span>
+          </div>
+          
           <!-- UPDATE ITEM FORM -->
           <div class="column">
             <div class="updateForm to-hide-aff-item">
@@ -686,17 +699,7 @@
               </b-field>
             </div>
           </div>
-          <div class="column">
-              <span class="icon update-delete-icons"
-                @click="updateAffiliation(item)">
-                <font-awesome-icon :icon="['fas', 'pen']"/>
-              </span>
-              |
-              <span id="delete-button" class="icon update-delete-icons"
-                @click="deleteAffiliation(item)">
-                <font-awesome-icon :icon="['fas', 'trash-alt']"/>
-              </span>
-          </div>
+          
         </li>
 
       </ul>
