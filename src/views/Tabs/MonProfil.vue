@@ -847,7 +847,7 @@ export default {
       } else {
           switch (this.social_media_id) {
             case 'Facebook':
-              this.$store.commit('addSocialMedia',
+              this.$store.dispatch('addSocialMedia_action',
               {
                 social_media: this.social_media_id,
                 identifier: this.social_media_id
@@ -863,7 +863,7 @@ export default {
               break;
 
             case 'LinkedIn':
-              this.$store.commit('addSocialMedia',
+              this.$store.dispatch('addSocialMedia_action',
               {
                 social_media: this.social_media_id,
                 identifier: this.social_media_id
@@ -879,7 +879,7 @@ export default {
               break;
           
             case 'Twitter':
-              this.$store.commit('addSocialMedia',
+              this.$store.dispatch('addSocialMedia_action',
               {
                 social_media: this.social_media_id,
                 identifier: this.social_media_id
@@ -895,7 +895,7 @@ export default {
               break;
 
             case 'Orcid':
-              this.$store.commit('addSocialMedia',
+              this.$store.dispatch('addSocialMedia_action',
               {
                 social_media: this.social_media_id,
                 identifier: this.social_media_id

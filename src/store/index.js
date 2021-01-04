@@ -119,7 +119,9 @@ export default new Vuex.Store({
   },
   
   actions: {
-  
+    addSocialMedia_action (context, payload) {
+      context.commit('addSocialMedia', payload);
+    }
   },
   
   modules: {
