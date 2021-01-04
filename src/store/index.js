@@ -131,9 +131,13 @@ export default new Vuex.Store({
       context.commit('updateUserInfos', payload);
     },
 
-    deleteAffiliation_action (context, payload){
+    deleteAffiliation_action (context, payload) {
       context.commit('deleteAffiliation', payload);
     },
+
+    addAffiliation_action (context, payload) {
+      context.commit('addAffiliation', payload);
+    }
   },
   
   modules: {

@@ -810,7 +810,7 @@ export default {
                   pays: this.newAffiliation.pays
                 }
                 
-                this.$store.commit('addAffiliation',newAffItem);
+                this.$store.dispatch('addAffiliation_action',newAffItem);
 
                 this.newAffiliation = {
                   organisation: '',
