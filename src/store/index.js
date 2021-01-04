@@ -125,6 +125,10 @@ export default new Vuex.Store({
 
     removeSocialMedia_action (context, payload) {
       context.commit('removeSocialMedia', payload);
+    },
+
+    updateUserInfos_action (context, payload) {
+      context.commit('updateUserInfos', payload);
     }
   },
   

@@ -758,7 +758,14 @@ export default {
   methods: {
     //USER INFO METHODS
     updateUserInfos: function () {
-      this.$store.commit('updateUserInfos', this.user_info)
+      this.$store.dispatch('updateUserInfos_action', this.user_info)
+      this.$buefy.notification.open({
+        duration: 3000,
+        message: 'User information updated',
+        position: 'is-bottom',
+        type: 'is-light',
+        hasIcon: true
+      })
       this.user_info = {
         nom: '',
         prenom: '',
