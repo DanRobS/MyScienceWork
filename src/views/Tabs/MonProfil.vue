@@ -32,7 +32,7 @@
     <!-- #################### -->
     <div id="user-social-media">
       <b-field label="Social media ids">
-        <b-input  id="social_media_input" value="" placeholder="URL/username/id"></b-input>
+        <b-input v-model="social_media_username" id="social_media_input" value="" placeholder="URL/username/id"></b-input>
         <b-select v-model="social_media_id" class="to-hide-mobile" id="social_media_select" 
                   placeholder="Select a social media plateform">
           <option value="Facebook">Facebook</option>
@@ -745,6 +745,7 @@ export default {
         orcid: ''
       },
       social_media_id: '',
+      social_media_username: '',
       newAffiliation: {
         organisation: '',
         equipe: '',
@@ -850,9 +851,10 @@ export default {
               this.$store.dispatch('addSocialMedia_action',
               {
                 social_media: this.social_media_id,
-                identifier: this.social_media_id
+                identifier: this.social_media_username
               });
               this.social_media_id='';
+              this.social_media_username='';
               this.$buefy.notification.open({
                 duration: 3000,
                 message: 'Facebook link updated',
@@ -866,9 +868,10 @@ export default {
               this.$store.dispatch('addSocialMedia_action',
               {
                 social_media: this.social_media_id,
-                identifier: this.social_media_id
+                identifier: this.social_media_username
               });
               this.social_media_id='';
+              this.social_media_username='';
               this.$buefy.notification.open({
                 duration: 3000,
                 message: 'LinkedIn link updated',
@@ -882,9 +885,10 @@ export default {
               this.$store.dispatch('addSocialMedia_action',
               {
                 social_media: this.social_media_id,
-                identifier: this.social_media_id
+                identifier: this.social_media_username
               });
               this.social_media_id='';
+              this.social_media_username='';
               this.$buefy.notification.open({
                 duration: 3000,
                 message: 'Twitter link updated',
@@ -898,9 +902,10 @@ export default {
               this.$store.dispatch('addSocialMedia_action',
               {
                 social_media: this.social_media_id,
-                identifier: this.social_media_id
+                identifier: this.social_media_username
               });
               this.social_media_id='';
+              this.social_media_username='';
               this.$buefy.notification.open({
                 duration: 3000,
                 message: 'Orcid link updated',
@@ -927,6 +932,7 @@ export default {
         switch (this.social_media_id) {
           case 'Facebook':
             this.$store.dispatch('removeSocialMedia_action', this.social_media_id);
+            this.social_media_id='';
             this.$buefy.notification.open({
               duration: 3000,
               message: 'Facebook link removed',
@@ -938,6 +944,7 @@ export default {
 
           case 'LinkedIn':
             this.$store.dispatch('removeSocialMedia_action', this.social_media_id);
+            this.social_media_id='';
             this.$buefy.notification.open({
               duration: 3000,
               message: 'LinkedIn link removed',
@@ -949,6 +956,7 @@ export default {
         
           case 'Twitter':
             this.$store.dispatch('removeSocialMedia_action', this.social_media_id);
+            this.social_media_id='';
             this.$buefy.notification.open({
               duration: 3000,
               message: 'Twitter link removed',
@@ -960,6 +968,7 @@ export default {
 
           case 'Orcid':
             this.$store.dispatch('removeSocialMedia_action', this.social_media_id);
+            this.social_media_id='';
             this.$buefy.notification.open({
               duration: 3000,
               message: 'Orcid link removed',
@@ -969,12 +978,7 @@ export default {
             })
             break;
         }
-      }
-
-        
-      
-
-      
+      }      
     },
 
     //AFFILIATION UPDATE METHODS
