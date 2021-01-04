@@ -137,6 +137,10 @@ export default new Vuex.Store({
 
     addAffiliation_action (context, payload) {
       context.commit('addAffiliation', payload);
+    },
+
+    updateAffiliation_action (context, payload) {
+      context.commit('updateAffiliation', payload);
     }
   },
   

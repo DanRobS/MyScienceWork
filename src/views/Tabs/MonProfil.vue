@@ -1017,7 +1017,7 @@ export default {
           if(value1 != -1 &&
             item.organisation !=
              updateForm.querySelector('#organisation-field-update')[value1].value){
-               this.$store.commit('updateAffiliation',
+               this.$store.dispatch('updateAffiliation_action',
                {
                  field: 'organisation',
                  index: i,
@@ -1030,7 +1030,7 @@ export default {
           if(updateForm.querySelector('#team-field-update').value != '' &&
             item.equipe != 
              updateForm.querySelector('#team-field-update').value){
-               this.$store.commit('updateAffiliation',
+               this.$store.dispatch('updateAffiliation_action',
                {
                  field: 'equipe',
                  index: i,
@@ -1043,7 +1043,7 @@ export default {
           if(value2 != -1 &&
             item.pays !=
              updateForm.querySelector('#country-update')[value2].value){
-               this.$store.commit('updateAffiliation',
+               this.$store.dispatch('updateAffiliation_action',
                {
                  field: 'pays',
                  index: i,
@@ -1056,7 +1056,7 @@ export default {
           if(updateForm.querySelector('#date-beginning-update').value != '' &&
             item.dateDebut != 
              updateForm.querySelector('#date-beginning-update').value){
-               this.$store.commit('updateAffiliation',
+               this.$store.dispatch('updateAffiliation_action',
                {
                  field: 'dateDebut',
                  index: i,
@@ -1069,7 +1069,7 @@ export default {
           if(updateForm.querySelector('#date-end-update').value != '' &&
             item.dateFin != 
              updateForm.querySelector('#date-end-update').value){
-               this.$store.commit('updateAffiliation',
+               this.$store.dispatch('updateAffiliation_action',
                {
                  field: 'dateFin',
                  index: i,
@@ -1081,13 +1081,13 @@ export default {
           if(new Date(item.dateDebut).getTime()
               >= new Date(item.dateFin).getTime()){
               
-              this.$store.commit('updateAffiliation',
+              this.$store.dispatch('updateAffiliation_action',
                {
                  field: 'dateDebut',
                  index: i,
                  value: ''
                }); 
-              this.$store.commit('updateAffiliation',
+              this.$store.dispatch('updateAffiliation_action',
                {
                  field: 'dateFin',
                  index: i,
