@@ -761,7 +761,19 @@ export default {
   methods: {
     //USER INFO METHODS
     updateUserInfos: function () {
-      this.$store.dispatch('updateUserInfos_action', this.user_info)
+
+      if(this.user_info.nom == ''
+        && this.user_info.prenom=='' 
+        && this.user_info.about==''){
+        this.$buefy.notification.open({
+        duration: 3000,
+        message: 'Fill one of the fields',
+        position: 'is-bottom',
+        type: 'is-light',
+        hasIcon: true
+      })
+      } else {
+        this.$store.dispatch('updateUserInfos_action', this.user_info)
       this.$buefy.notification.open({
         duration: 3000,
         message: 'User information updated',
@@ -769,13 +781,14 @@ export default {
         type: 'is-light',
         hasIcon: true
       })
-      var date = new Date();
-      console.log(date.toISOString().substring(0,10));
       this.user_info = {
         nom: '',
         prenom: '',
         about: ''
       }
+      }
+
+      
     },
 
     //AFFILIATION METHODS
@@ -1065,11 +1078,14 @@ export default {
           if(updateForm.querySelector('#date-beginning-update').value != '' &&
             item.dateDebut != 
              updateForm.querySelector('#date-beginning-update').value){
+               
+               var date1 = new Date(updateForm.querySelector('#date-beginning-update').value);
+               
                this.$store.dispatch('updateAffiliation_action',
                {
                  field: 'dateDebut',
                  index: i,
-                 value: updateForm.querySelector('#date-beginning-update').value
+                 value: date1.toISOString().split('T')[0]
                }); 
                
              }
@@ -1078,11 +1094,14 @@ export default {
           if(updateForm.querySelector('#date-end-update').value != '' &&
             item.dateFin != 
              updateForm.querySelector('#date-end-update').value){
+               
+               var date2 = new Date(updateForm.querySelector('#date-end-update').value);
+               
                this.$store.dispatch('updateAffiliation_action',
                {
                  field: 'dateFin',
                  index: i,
-                 value: updateForm.querySelector('#date-end-update').value
+                 value: date2.toISOString().split('T')[0]
                }); 
                
              }

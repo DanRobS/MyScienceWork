@@ -24,7 +24,7 @@ export default new Vuex.Store({
         {
           organisation: 'Commissariat à l\'énergie atomique',
           equipe: 'Equipe de recherche en fission nucléaire',
-          dateDebut: '01/06/2020',
+          dateDebut: '2020-01-06',
           dateFin: '',
           pays: 'France',
         }
