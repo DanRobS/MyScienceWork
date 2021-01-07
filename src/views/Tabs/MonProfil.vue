@@ -769,6 +769,8 @@ export default {
         type: 'is-light',
         hasIcon: true
       })
+      var date = new Date();
+      console.log(date.toISOString().substring(0,10));
       this.user_info = {
         nom: '',
         prenom: '',
@@ -805,11 +807,15 @@ export default {
                   hasIcon: true
                 })
               } else {
+
+                var date1 = new Date(this.newAffiliation.dateDebut);
+                var date2 = new Date(this.newAffiliation.dateFin);
+
                 var newAffItem = {
                   organisation: this.newAffiliation.organisation,
                   equipe: this.newAffiliation.equipe,
-                  dateDebut: new Date(this.newAffiliation.dateDebut).toLocaleDateString(),
-                  dateFin: new Date(this.newAffiliation.dateFin).toLocaleDateString(),
+                  dateDebut: date1.toISOString().split('T')[0],
+                  dateFin: date2.toISOString().split('T')[0],
                   pays: this.newAffiliation.pays
                 }
                 

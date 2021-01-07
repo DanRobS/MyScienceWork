@@ -9,6 +9,7 @@ export default new Vuex.Store({
   state: {
     user: {
       infos: {
+        id: '',
         nom: '',
         prenom: '',
         about: ''
