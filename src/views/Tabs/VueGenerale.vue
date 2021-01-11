@@ -6,7 +6,7 @@
         <p class="affiliation-name"> {{ item.organisation }} </p>
         <!--<p class="affiliation-role"> {{ item.role }} </p>-->
         <p class="affiliation-team"> {{ item.equipe }} </p>
-        <p v-if="item.dateDebut != '' && item.dateFin == ''" class="affiliation-date"> Depuis {{item.dateDebut}} </p>
+        <p v-if="item.dateDebut != '' && item.dateFin == null" class="affiliation-date"> Depuis {{item.dateDebut}} </p>
         <p v-else class="affiliation-date"> {{item.dateDebut}} - {{item.dateFin}} </p>
         <p class="affiliation-country"> {{item.pays}} </p>
       </li>
