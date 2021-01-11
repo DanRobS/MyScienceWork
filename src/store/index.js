@@ -11,6 +11,7 @@ export default new Vuex.Store({
     URI_getUser: 'http://localhost:8081/getUser/',
     URI_getUserById: 'http://localhost:8081/getUserById/',
     URI_updateUserInfos: 'http://localhost:8081/updateUserInfos/',
+    URI_updateSocialMedia: 'http://localhost:8081/updateSocialMedia',
     user: {
       infos: {
         id: 0,
@@ -141,7 +142,16 @@ export default new Vuex.Store({
   
   actions: {
     addSocialMedia_action (context, payload) {
-      context.commit('addSocialMedia', payload);
+      axios.post(this.state.URI_updateSocialMedia, payload)
+      .then(response => {
+        console.log(response.data.message);
+        context.commit('addSocialMedia', payload);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
+      
     },
 
     removeSocialMedia_action (context, payload) {
@@ -149,7 +159,6 @@ export default new Vuex.Store({
     },
 
     updateUserInfos_action (context, payload) {
-      
       axios.post(this.state.URI_updateUserInfos, payload)
       .then(response => {
         console.log(response.data.message);
@@ -157,7 +166,6 @@ export default new Vuex.Store({
       }).catch(err => {
         console.log(err);
       })
-      
     },
 
     deleteAffiliation_action (context, payload) {

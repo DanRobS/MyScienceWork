@@ -879,6 +879,7 @@ export default {
             case 'Facebook':
               this.$store.dispatch('addSocialMedia_action',
               {
+                id: this.$store.state.user.infos.id,
                 social_media: this.social_media_id,
                 identifier: this.social_media_username
               });
@@ -896,6 +897,7 @@ export default {
             case 'LinkedIn':
               this.$store.dispatch('addSocialMedia_action',
               {
+                id: this.$store.state.user.infos.id,
                 social_media: this.social_media_id,
                 identifier: this.social_media_username
               });
@@ -913,6 +915,7 @@ export default {
             case 'Twitter':
               this.$store.dispatch('addSocialMedia_action',
               {
+                id: this.$store.state.user.infos.id,
                 social_media: this.social_media_id,
                 identifier: this.social_media_username
               });
@@ -930,6 +933,7 @@ export default {
             case 'Orcid':
               this.$store.dispatch('addSocialMedia_action',
               {
+                id: this.$store.state.user.infos.id,
                 social_media: this.social_media_id,
                 identifier: this.social_media_username
               });
