@@ -737,6 +737,7 @@ export default {
   data: () => {
     return {
       user_info: {
+        id: 0,
         nom: '',
         prenom: '',
         about: ''
@@ -773,22 +774,21 @@ export default {
         hasIcon: true
       })
       } else {
+        this.user_info.id = this.$store.state.user.infos.id;
         this.$store.dispatch('updateUserInfos_action', this.user_info)
-      this.$buefy.notification.open({
+        this.$buefy.notification.open({
         duration: 3000,
         message: 'User information updated',
         position: 'is-bottom',
         type: 'is-light',
         hasIcon: true
       })
-      this.user_info = {
-        nom: '',
-        prenom: '',
-        about: ''
+        this.user_info = {
+          nom: '',
+          prenom: '',
+          about: ''
+        }
       }
-      }
-
-      
     },
 
     //AFFILIATION METHODS
