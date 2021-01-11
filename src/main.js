@@ -7,13 +7,16 @@ import 'buefy/dist/buefy.css';
 import 'bulma/css/bulma.css'
 import './icons/icons.js'
 import './assets/mystyles.scss'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
 
 Vue.config.productionTip = false
 
 Vue.use(Buefy, {
   defaultIconComponent: 'vue-fontawesome',
   defaultIconPack: 'fas'
-});
+}, VueAxios, axios);
 
 new Vue({
   router,

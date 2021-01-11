@@ -7,6 +7,7 @@ export default new Vuex.Store({
   strict: true,
 
   state: {
+    URI_getUser: 'http://localhost:8081/getUser/',
     user: {
       infos: {
         id: '',
@@ -116,7 +117,11 @@ export default new Vuex.Store({
     
       if(payload.field=='dateFin')
       state.user.affiliations[payload.index].dateFin = payload.value;
-    }
+    },
+
+    //findUser(state, payload) {
+
+    //}
   },
   
   actions: {
@@ -142,6 +147,12 @@ export default new Vuex.Store({
 
     updateAffiliation_action (context, payload) {
       context.commit('updateAffiliation', payload);
+    },
+    
+    
+    findUser_action(payload) {
+      console.log(payload);
+      
     }
   },
   
