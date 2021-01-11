@@ -5,7 +5,7 @@
         <b-autocomplete
           v-model="username"
           :data="filteredDataArray"
-          placeholder="Rechercher un utilisateur"
+          placeholder="Entrer un nom ou un prénom"
           icon="calendar-day"
           icon-pack="fas"
           :highlight="true"
@@ -38,7 +38,7 @@ export default {
     return {
       username: '',
       userData: [],
-      selectedUser_id: 0
+      selectedUser_id: null
     }
   },
   methods: {
@@ -46,7 +46,7 @@ export default {
       if(this.username!=''){
         axios.get(this.$store.state.URI_getUser+''+this.username)
         .then(response => {
-          
+            this.userData = [];
             if(response.data.suggest_nom[0].options.length > 0){
               var i=0;
               for(i=0; i<response.data.suggest_nom[0].options.length; i++){
@@ -80,18 +80,14 @@ export default {
     },
 
     launchSearch: function () {
-      
-        this.$store.dispatch('findUserById_action',this.selected);
-
-        this.username='';  
-
+      this.$store.dispatch('findUserById_action',this.selectedUser_id);
+      this.username='';  
     }
   },
+
   computed: {
     filteredDataArray() {
       return this.userData.filter((option) => {
-        this.selectedUser_id = option.id;
-        
         return option
         })
       }

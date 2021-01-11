@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -11,7 +12,6 @@ export default new Vuex.Store({
     URI_getUserById: 'http://localhost:8081/getUserById/',
     user: {
       infos: {
-        id: '',
         nom: '',
         prenom: '',
         about: ''
@@ -120,9 +120,20 @@ export default new Vuex.Store({
       state.user.affiliations[payload.index].dateFin = payload.value;
     },
 
-    //findUserById(state, payload) {
-
-    //}
+    findUserById(state, payload) {
+      state.user.infos = {
+        nom: payload.nom,
+        prenom: payload.prenom,
+        about: payload.about
+      };
+      state.user.social_media = {
+        facebook: payload.facebook,
+        linkedin: payload.linkedin,
+        twitter: payload.twitter,
+        orcid: payload.orcid
+      }
+      state.user.affiliations = payload.affiliations;
+    }
   },
   
   actions: {
@@ -151,10 +162,31 @@ export default new Vuex.Store({
     },
     
     findUserById_action(context, payload) {
+      var payload2 = {};
+      axios.get(this.state.URI_getUserById+''+payload.id)
+        .then(response => {
+          
+          payload2 = {
+            nom: response.data._source.nom,
+            prenom: response.data._source.prenom,
+            about: response.data._source.about,
+            facebook: response.data._source.facebook,
+            linkedin: response.data._source.linkedin,
+            twitter: response.data._source.twitter,
+            orcid: response.data._source.orcid,
+            affiliations: []
+          }
+          
+          response.data.inner_hits.affiliations.hits.hits.forEach(element => {
+            payload2.affiliations.push(element._source);
+          });
+          
+          context.commit('findUserById', payload2);
 
-      
-
-      context.commit('findUserById', payload);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
   },
   
