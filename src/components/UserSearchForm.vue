@@ -47,28 +47,29 @@ export default {
         axios.get(this.$store.state.URI_getUser+''+this.username)
         .then(response => {
             this.userData = [];
+
+            //GETTING DATA FROM LAST NAME SUGGESTION
             if(response.data.suggest_nom[0].options.length > 0){
-              var i=0;
-              for(i=0; i<response.data.suggest_nom[0].options.length; i++){
-                if(!this.userData.some(e => e.id === response.data.suggest_nom[0].options[i]._id)){
+              response.data.suggest_nom[0].options.forEach(element => {
+                if(!this.userData.some(e => e.id === element._id)){
                     this.userData.push({
-                    id: response.data.suggest_nom[0].options[i]._id,
-                    fullName: response.data.suggest_nom[0].options[i]._source.prenom+' '+response.data.suggest_nom[0].options[i]._source.nom
+                    id: element._id,
+                    fullName: element._source.prenom+' '+element._source.nom
                   });
                 }
-              }
+              })
             }
 
+            //GETTING DATA FROM FIRST NAME SUGGESTION
             if(response.data.suggest_prenom[0].options.length > 0){
-              var j=0;
-              for(j=0; j<response.data.suggest_prenom[0].options.length; j++){
-                if(!this.userData.some(e => e.id === response.data.suggest_prenom[0].options[j]._id )){
+              response.data.suggest_prenom[0].options.forEach(element => {
+                if(!this.userData.some(e => e.id === element._id)){
                     this.userData.push({
-                    id: response.data.suggest_prenom[0].options[j]._id,
-                    fullName: response.data.suggest_prenom[0].options[j]._source.prenom+' '+response.data.suggest_prenom[0].options[j]._source.nom
+                    id: element._id,
+                    fullName: element._source.prenom+' '+element._source.nom
                   });
                 }
-              }
+              })
             }
         })
         .catch(error =>{
@@ -79,6 +80,7 @@ export default {
       }
     },
 
+    //FETCHES THE USER BASED ON HIS ID, UPDATES THE STORE
     launchSearch: function () {
       this.$store.dispatch('findUserById_action',this.selectedUser_id);
       this.username='';  
@@ -86,6 +88,7 @@ export default {
   },
 
   computed: {
+    //DATA FROM WHICH AUTOCOMPLETE FIELD MATCHES INPUT
     filteredDataArray() {
       return this.userData.filter((option) => {
         return option
