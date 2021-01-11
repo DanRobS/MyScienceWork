@@ -12,6 +12,7 @@ export default new Vuex.Store({
     URI_getUserById: 'http://localhost:8081/getUserById/',
     user: {
       infos: {
+        id: 0,
         nom: '',
         prenom: '',
         about: ''
@@ -122,6 +123,7 @@ export default new Vuex.Store({
 
     findUserById(state, payload) {
       state.user.infos = {
+        id: payload.id,
         nom: payload.nom,
         prenom: payload.prenom,
         about: payload.about
@@ -167,6 +169,7 @@ export default new Vuex.Store({
         .then(response => {
           
           payload2 = {
+            id: payload.id,
             nom: response.data._source.nom,
             prenom: response.data._source.prenom,
             about: response.data._source.about,
