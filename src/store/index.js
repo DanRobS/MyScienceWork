@@ -12,6 +12,7 @@ export default new Vuex.Store({
     URI_getUserById: 'http://localhost:8081/getUserById/',
     URI_updateUserInfos: 'http://localhost:8081/updateUserInfos/',
     URI_updateSocialMedia: 'http://localhost:8081/updateSocialMedia',
+    URI_removeSocialMedia: 'http://localhost:8081/removeSocialMedia',
     user: {
       infos: {
         id: 0,
@@ -89,16 +90,16 @@ export default new Vuex.Store({
     },
 
     removeSocialMedia (state, payload) {
-      if(payload=='Facebook')
+      if(payload.social_media=='Facebook')
       state.user.social_media.facebook = '';  
     
-      if(payload=='LinkedIn')
+      if(payload.social_media=='LinkedIn')
       state.user.social_media.linkedin = '';
     
-      if(payload=='Twitter')
+      if(payload.social_media=='Twitter')
       state.user.social_media.twitter = '';
 
-      if(payload=='Orcid')
+      if(payload.social_media=='Orcid')
       state.user.social_media.orcid = '';
     },
 
@@ -155,7 +156,16 @@ export default new Vuex.Store({
     },
 
     removeSocialMedia_action (context, payload) {
-      context.commit('removeSocialMedia', payload);
+
+      axios.post(this.state.URI_removeSocialMedia, payload)
+        .then(response => {
+          console.log(response.data.message);
+          context.commit('removeSocialMedia', payload);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+
     },
 
     updateUserInfos_action (context, payload) {

@@ -964,7 +964,10 @@ export default {
       } else {
         switch (this.social_media_id) {
           case 'Facebook':
-            this.$store.dispatch('removeSocialMedia_action', this.social_media_id);
+            this.$store.dispatch('removeSocialMedia_action', {
+              id: this.$store.state.user.infos.id,
+              social_media: this.social_media_id 
+            });
             this.social_media_id='';
             this.$buefy.notification.open({
               duration: 3000,
@@ -976,7 +979,10 @@ export default {
             break;
 
           case 'LinkedIn':
-            this.$store.dispatch('removeSocialMedia_action', this.social_media_id);
+            this.$store.dispatch('removeSocialMedia_action', {
+              id: this.$store.state.user.infos.id,
+              social_media: this.social_media_id 
+            });
             this.social_media_id='';
             this.$buefy.notification.open({
               duration: 3000,
@@ -988,7 +994,10 @@ export default {
             break;
         
           case 'Twitter':
-            this.$store.dispatch('removeSocialMedia_action', this.social_media_id);
+            this.$store.dispatch('removeSocialMedia_action', {
+              id: this.$store.state.user.infos.id,
+              social_media: this.social_media_id 
+            });
             this.social_media_id='';
             this.$buefy.notification.open({
               duration: 3000,
@@ -1000,7 +1009,10 @@ export default {
             break;
 
           case 'Orcid':
-            this.$store.dispatch('removeSocialMedia_action', this.social_media_id);
+            this.$store.dispatch('removeSocialMedia_action', {
+              id: this.$store.state.user.infos.id,
+              social_media: this.social_media_id 
+            });
             this.social_media_id='';
             this.$buefy.notification.open({
               duration: 3000,
