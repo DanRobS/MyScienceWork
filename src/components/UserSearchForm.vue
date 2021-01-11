@@ -4,7 +4,7 @@
       <b-field>
         <b-autocomplete
           v-model="username"
-          :data="userData"
+          :data="filteredDataArray"
           placeholder="Rechercher un utilisateur"
           icon="calendar-day"
           icon-pack="fas"
@@ -12,7 +12,7 @@
           field="fullName"
           @input="searchUser"
           clearable
-          @select="option => selected = option">
+          @select="option => selectedUser_id = option">
           <template slot="empty">No results found</template>
         </b-autocomplete>
       </b-field>
@@ -37,7 +37,8 @@ export default {
   data: () => {
     return {
       username: '',
-      userData: []
+      userData: [],
+      selectedUser_id: 0
     }
   },
   methods: {
@@ -45,7 +46,7 @@ export default {
       if(this.username!=''){
         axios.get(this.$store.state.URI_getUser+''+this.username)
         .then(response => {
-            
+          
             if(response.data.suggest_nom[0].options.length > 0){
               var i=0;
               for(i=0; i<response.data.suggest_nom[0].options.length; i++){
@@ -73,12 +74,27 @@ export default {
         .catch(error =>{
             console.log(error);
         })
+      } else {
+        this.userData = [];
       }
     },
 
     launchSearch: function () {
       
+        this.$store.dispatch('findUserById_action',this.selected);
+
+        this.username='';  
+
     }
+  },
+  computed: {
+    filteredDataArray() {
+      return this.userData.filter((option) => {
+        this.selectedUser_id = option.id;
+        
+        return option
+        })
+      }
   }
 }
 </script>

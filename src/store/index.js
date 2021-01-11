@@ -8,6 +8,7 @@ export default new Vuex.Store({
 
   state: {
     URI_getUser: 'http://localhost:8081/getUser/',
+    URI_getUserById: 'http://localhost:8081/getUserById/',
     user: {
       infos: {
         id: '',
@@ -119,7 +120,7 @@ export default new Vuex.Store({
       state.user.affiliations[payload.index].dateFin = payload.value;
     },
 
-    //findUser(state, payload) {
+    //findUserById(state, payload) {
 
     //}
   },
@@ -149,10 +150,11 @@ export default new Vuex.Store({
       context.commit('updateAffiliation', payload);
     },
     
-    
-    findUser_action(payload) {
-      console.log(payload);
+    findUserById_action(context, payload) {
+
       
+
+      context.commit('findUserById', payload);
     }
   },
   
