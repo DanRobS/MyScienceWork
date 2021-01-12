@@ -1088,9 +1088,7 @@ export default {
              }
           
           //UPDATING DATE DEBUT
-          if(updateForm.querySelector('#date-beginning-update').value != '' &&
-            item.dateDebut != 
-             updateForm.querySelector('#date-beginning-update').value){
+          if(updateForm.querySelector('#date-beginning-update').value != ''){
                var date1 = new Date(updateForm.querySelector('#date-beginning-update').value);
                
                payload.dateDebut = date1.toISOString().split('T')[0];
@@ -1101,17 +1099,17 @@ export default {
              }
 
           //UPDATING DATE FIN
-          if(updateForm.querySelector('#date-end-update').value != '' &&
-            item.dateFin != 
-             updateForm.querySelector('#date-end-update').value){     
+          if(updateForm.querySelector('#date-end-update').value != ''){     
               var date2 = new Date(updateForm.querySelector('#date-end-update').value);
           
               payload.dateFin = date2.toISOString().split('T')[0]; 
               updateForm.querySelector('#date-end-update').value ='';
              }
 
-          if(new Date(item.dateDebut).getTime()
-              >= new Date(item.dateFin).getTime()){
+          if(payload.dateFin != null && payload.dateFin != ''){
+            if(new Date(payload.dateDebut).getTime()
+              >= new Date(payload.dateFin).getTime()){
+              
               
               payload.dateDebut = null;
               payload.dateFin = null;
@@ -1124,6 +1122,8 @@ export default {
               hasIcon: true
             })
           }
+          }
+          
         
         this.$store.dispatch('updateAffiliation_action',payload);
         
