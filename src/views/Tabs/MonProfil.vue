@@ -820,11 +820,11 @@ export default {
               newAffItem.affiliation.dateDebut = date1.toISOString().split('T')[0];
             }
 
-/*
-            if(newAffItem.dateDebut != null && this.newAffiliation.dateFin == '' ){
+
+            if(newAffItem.affiliation.dateDebut != null ){
               if(this.newAffiliation.dateFin != ''){
                  var date2 = new Date(this.newAffiliation.dateFin);
-                 if(newAffItem.dateDebut.getTime >= date2.getTime){
+                 if(newAffItem.affiliation.dateDebut.getTime >= date2.getTime){
                    this.$buefy.notification.open({
                     duration: 3000,
                     message: 'Beginning date can\'t be beyond ending date',
@@ -833,7 +833,7 @@ export default {
                     hasIcon: true
                   })
                  } else {
-                   newAffItem.dateFin = date2.toISOString().split('T')[0];
+                   newAffItem.affiliation.dateFin = date2.toISOString().split('T')[0];
                  }
               }
             } else {
@@ -845,7 +845,7 @@ export default {
                   hasIcon: true
                 })
             }
-*/
+
                 this.$store.dispatch('addAffiliation_action',newAffItem);
 
                 this.newAffiliation = {
