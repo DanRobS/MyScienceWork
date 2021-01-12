@@ -14,6 +14,7 @@ export default new Vuex.Store({
     URI_updateSocialMedia: 'http://localhost:8081/updateSocialMedia',
     URI_removeSocialMedia: 'http://localhost:8081/removeSocialMedia',
     URI_updateAffiliation: 'http://localhost:8081/updateAffiliation',
+    URI_addAffiliation: 'http://localhost:8081/addAffiliation',
     user: {
       infos: {
         id: 0,
@@ -73,7 +74,7 @@ export default new Vuex.Store({
     },
 
     addAffiliation (state, payload) {
-      state.user.affiliations.push(payload);
+      state.user.affiliations.push(payload.affiliation);
     },
 
     addSocialMedia (state, payload) {
@@ -109,7 +110,6 @@ export default new Vuex.Store({
     },
 
     updateAffiliation (state, payload) {
-
       if(state.user.affiliations.some(e => e === payload.aff_to_update)){
         state.user.affiliations[payload.index].organisation = payload.organisation;
         state.user.affiliations[payload.index].equipe = payload.equipe;
@@ -144,10 +144,8 @@ export default new Vuex.Store({
         context.commit('addSocialMedia', payload);
       })
       .catch(err => {
-        console.log(err);
+        console.log(err.meta.body.error);
       })
-
-      
     },
 
     removeSocialMedia_action (context, payload) {
@@ -158,7 +156,7 @@ export default new Vuex.Store({
           context.commit('removeSocialMedia', payload);
         })
         .catch(err => {
-          console.log(err);
+          console.log(err.meta.body.error);
         })
 
     },
@@ -169,7 +167,7 @@ export default new Vuex.Store({
         console.log(response.data.message);
         context.commit('updateUserInfos', payload);
       }).catch(err => {
-        console.log(err);
+        console.log(err.meta.body.error);
       })
     },
 
@@ -178,7 +176,15 @@ export default new Vuex.Store({
     },
 
     addAffiliation_action (context, payload) {
-      context.commit('addAffiliation', payload);
+
+      axios.post(this.state.URI_addAffiliation, payload)
+        .then(response => {
+          console.log(response.data.message);
+          context.commit('addAffiliation', payload);
+        })
+        .catch(err => {
+          console.error(err.meta.body.error)
+        })
     },
 
     updateAffiliation_action (context, payload) {
@@ -189,7 +195,7 @@ export default new Vuex.Store({
           context.commit('updateAffiliation', payload);
         })
         .catch(err => {
-          console.error(err);
+          console.error(err.meta.body.error);
         })
     },
     

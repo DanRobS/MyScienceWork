@@ -793,45 +793,59 @@ export default {
 
     //AFFILIATION METHODS
     addAffiliation: function() {
+
+      var newAffItem = {
+        id: this.$store.state.user.infos.id,
+        affiliation: {
+          organisation: '',
+          equipe: '',
+          dateDebut: null,
+          dateFin: null,
+          pays: ''
+          }
+        }
+
       if (this.newAffiliation.organisation != '' 
           && this.newAffiliation.pays != '') {
 
-            if(new Date(this.newAffiliation.dateDebut).toLocaleDateString() == 'Invalid Date'
-                && new Date(this.newAffiliation.dateFin).toLocaleDateString() != 'Invalid Date') {
-                  this.newAffiliation.dateDebut = '';
-                  this.newAffiliation.dateFin = '';
-                  this.$buefy.notification.open({
+            newAffItem.affiliation.organisation = this.newAffiliation.organisation;
+            newAffItem.affiliation.pays = this.newAffiliation.pays;
+
+            if(this.newAffiliation.equipe != ''){
+              newAffItem.affiliation.equipe = this.newAffiliation.equipe;
+            }
+
+            if(this.newAffiliation.dateDebut != ''){
+              var date1 = new Date(this.newAffiliation.dateDebut);
+              newAffItem.affiliation.dateDebut = date1.toISOString().split('T')[0];
+            }
+
+/*
+            if(newAffItem.dateDebut != null && this.newAffiliation.dateFin == '' ){
+              if(this.newAffiliation.dateFin != ''){
+                 var date2 = new Date(this.newAffiliation.dateFin);
+                 if(newAffItem.dateDebut.getTime >= date2.getTime){
+                   this.$buefy.notification.open({
+                    duration: 3000,
+                    message: 'Beginning date can\'t be beyond ending date',
+                    position: 'is-bottom',
+                    type: 'is-light',
+                    hasIcon: true
+                  })
+                 } else {
+                   newAffItem.dateFin = date2.toISOString().split('T')[0];
+                 }
+              }
+            } else {
+              this.$buefy.notification.open({
                   duration: 3000,
                   message: 'Can\'t have an ending date without a beginning date',
                   position: 'is-bottom',
                   type: 'is-light',
                   hasIcon: true
                 })
-                } 
-                else if (new Date(this.newAffiliation.dateDebut).getTime() >= 
-                     new Date(this.newAffiliation.dateFin).getTime() ) {
-                  this.newAffiliation.dateDebut = '';
-                  this.newAffiliation.dateFin = '';
-                  this.$buefy.notification.open({
-                  duration: 3000,
-                  message: 'Beginning date can\'t be beyond ending date',
-                  position: 'is-bottom',
-                  type: 'is-light',
-                  hasIcon: true
-                })
-              } else {
-
-                var date1 = new Date(this.newAffiliation.dateDebut);
-                var date2 = new Date(this.newAffiliation.dateFin);
-
-                var newAffItem = {
-                  organisation: this.newAffiliation.organisation,
-                  equipe: this.newAffiliation.equipe,
-                  dateDebut: date1.toISOString().split('T')[0],
-                  dateFin: date2.toISOString().split('T')[0],
-                  pays: this.newAffiliation.pays
-                }
-                
+            }
+*/
                 this.$store.dispatch('addAffiliation_action',newAffItem);
 
                 this.newAffiliation = {
@@ -841,16 +855,18 @@ export default {
                   dateFin: '',
                   pays: ''
                 }
-              }
+
         } else {
         this.$buefy.notification.open({
             duration: 3000,
-            message: 'You must fill the form',
+            message: 'You must mention at least organisation & pays',
             position: 'is-bottom',
             type: 'is-light',
             hasIcon: true
           })
       }
+      
+      
     },
 
     updateAffiliation: function(item) {
