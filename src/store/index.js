@@ -15,6 +15,7 @@ export default new Vuex.Store({
     URI_removeSocialMedia: 'http://localhost:8081/removeSocialMedia',
     URI_updateAffiliation: 'http://localhost:8081/updateAffiliation',
     URI_addAffiliation: 'http://localhost:8081/addAffiliation',
+    URI_removeAffiliation: 'http://localhost:8081/removeAffiliation',
     user: {
       infos: {
         id: 0,
@@ -106,7 +107,7 @@ export default new Vuex.Store({
     },
 
     deleteAffiliation (state, payload) {
-      state.user.affiliations.splice(payload, 1);
+      state.user.affiliations.splice(payload.index, 1);
     },
 
     updateAffiliation (state, payload) {
@@ -144,7 +145,7 @@ export default new Vuex.Store({
         context.commit('addSocialMedia', payload);
       })
       .catch(err => {
-        console.log(err.meta.body.error);
+        console.log(err);
       })
     },
 
@@ -156,7 +157,7 @@ export default new Vuex.Store({
           context.commit('removeSocialMedia', payload);
         })
         .catch(err => {
-          console.log(err.meta.body.error);
+          console.log(err);
         })
 
     },
@@ -167,12 +168,20 @@ export default new Vuex.Store({
         console.log(response.data.message);
         context.commit('updateUserInfos', payload);
       }).catch(err => {
-        console.log(err.meta.body.error);
+        console.log(err);
       })
     },
 
     deleteAffiliation_action (context, payload) {
-      context.commit('deleteAffiliation', payload);
+
+      axios.post(this.state.URI_removeAffiliation, payload)
+        .then(response => {
+          console.log(response.data.body);
+          context.commit('deleteAffiliation', payload);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     },
 
     addAffiliation_action (context, payload) {
@@ -183,7 +192,7 @@ export default new Vuex.Store({
           context.commit('addAffiliation', payload);
         })
         .catch(err => {
-          console.error(err.meta.body.error)
+          console.error(err)
         })
     },
 
@@ -195,12 +204,13 @@ export default new Vuex.Store({
           context.commit('updateAffiliation', payload);
         })
         .catch(err => {
-          console.error(err.meta.body.error);
+          console.error(err);
         })
     },
     
     findUserById_action(context, payload) {
       var payload2 = {};
+
       axios.get(this.state.URI_getUserById+''+payload.id)
         .then(response => {
           
