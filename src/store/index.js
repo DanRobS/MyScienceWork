@@ -191,7 +191,6 @@ export default new Vuex.Store({
         .catch(err => {
           console.error(err);
         })
-      
     },
     
     findUserById_action(context, payload) {

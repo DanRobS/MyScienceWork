@@ -1072,9 +1072,7 @@ export default {
              }
           
           //UPDATING EQUIPE
-          if(updateForm.querySelector('#team-field-update').value != '' &&
-            item.equipe != 
-             updateForm.querySelector('#team-field-update').value){
+          if(updateForm.querySelector('#team-field-update').value != ''){
                payload.equipe = updateForm.querySelector('#team-field-update').value;
                updateForm.querySelector('#team-field-update').value = '';
              } else {
