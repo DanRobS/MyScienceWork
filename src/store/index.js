@@ -13,6 +13,7 @@ export default new Vuex.Store({
     URI_updateUserInfos: 'http://localhost:8081/updateUserInfos/',
     URI_updateSocialMedia: 'http://localhost:8081/updateSocialMedia',
     URI_removeSocialMedia: 'http://localhost:8081/removeSocialMedia',
+    URI_updateAffiliation: 'http://localhost:8081/updateAffiliation',
     user: {
       infos: {
         id: 0,
@@ -108,20 +109,14 @@ export default new Vuex.Store({
     },
 
     updateAffiliation (state, payload) {
-      if(payload.field=='organisation')
-      state.user.affiliations[payload.index].organisation = payload.value;
-      
-      if(payload.field=='equipe')
-      state.user.affiliations[payload.index].equipe = payload.value;
 
-      if(payload.field=='pays')
-      state.user.affiliations[payload.index].pays = payload.value;
-
-      if(payload.field=='dateDebut')
-      state.user.affiliations[payload.index].dateDebut = payload.value;
-    
-      if(payload.field=='dateFin')
-      state.user.affiliations[payload.index].dateFin = payload.value;
+      if(state.user.affiliations.some(e => e === payload.aff_to_update)){
+        state.user.affiliations[payload.index].organisation = payload.organisation;
+        state.user.affiliations[payload.index].equipe = payload.equipe;
+        state.user.affiliations[payload.index].dateDebut = payload.dateDebut;
+        state.user.affiliations[payload.index].dateFin = payload.dateFin;
+        state.user.affiliations[payload.index].pays = payload.pays;
+      }
     },
 
     findUserById(state, payload) {
@@ -187,7 +182,17 @@ export default new Vuex.Store({
     },
 
     updateAffiliation_action (context, payload) {
-      context.commit('updateAffiliation', payload);
+
+      axios.post(this.state.URI_updateAffiliation, payload)
+        .then(response => {
+          console.log(response.data.message);
+          console.log(payload);
+          context.commit('updateAffiliation', payload);
+        })
+        .catch(err => {
+          console.error(err);
+        })
+      
     },
     
     findUserById_action(context, payload) {

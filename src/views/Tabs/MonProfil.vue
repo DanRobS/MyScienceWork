@@ -1030,6 +1030,17 @@ export default {
     registerUpdate: function (item) {
       var i = this.$store.state.user.affiliations.indexOf(item);
       
+      var payload = {
+        id: this.$store.state.user.infos.id,
+        index: i,
+        aff_to_update: item,
+        organisation: item.organisation,
+        equipe: '',
+        dateDebut: null,
+        dateFin: null,
+        pays: item.pays
+      }
+
       var updateForm = document.getElementsByClassName("updateForm")[i];
 
       //INDEXES FOR SELECT OBJECTS
@@ -1055,88 +1066,49 @@ export default {
           if(value1 != -1 &&
             item.organisation !=
              updateForm.querySelector('#organisation-field-update')[value1].value){
-               this.$store.dispatch('updateAffiliation_action',
-               {
-                 field: 'organisation',
-                 index: i,
-                 value: updateForm.querySelector('#organisation-field-update')[value1].value
-               }); 
-              
+               payload.organisation = updateForm.querySelector('#organisation-field-update')[value1].value;
+               updateForm.querySelector('#organisation-field-update')[value1].value = '';
+               //this.$store.dispatch('updateAffiliation_action',payload);
              }
           
           //UPDATING EQUIPE
           if(updateForm.querySelector('#team-field-update').value != '' &&
             item.equipe != 
              updateForm.querySelector('#team-field-update').value){
-               this.$store.dispatch('updateAffiliation_action',
-               {
-                 field: 'equipe',
-                 index: i,
-                 value: updateForm.querySelector('#team-field-update').value
-               }); 
-               
+               payload.equipe = updateForm.querySelector('#team-field-update').value;
              }
 
           //UPDATING PAYS
           if(value2 != -1 &&
             item.pays !=
-             updateForm.querySelector('#country-update')[value2].value){
-               this.$store.dispatch('updateAffiliation_action',
-               {
-                 field: 'pays',
-                 index: i,
-                 value: updateForm.querySelector('#country-update')[value2].value
-               }); 
-               
+             updateForm.querySelector('#country-update')[value2].value){ 
+               payload.pays = updateForm.querySelector('#country-update')[value2].value;
+               updateForm.querySelector('#country-update')[value2].value = '';
              }
           
           //UPDATING DATE DEBUT
           if(updateForm.querySelector('#date-beginning-update').value != '' &&
             item.dateDebut != 
              updateForm.querySelector('#date-beginning-update').value){
-               
                var date1 = new Date(updateForm.querySelector('#date-beginning-update').value);
                
-               this.$store.dispatch('updateAffiliation_action',
-               {
-                 field: 'dateDebut',
-                 index: i,
-                 value: date1.toISOString().split('T')[0]
-               }); 
-               
+               payload.dateDebut = date1.toISOString().split('T')[0];
              }
 
           //UPDATING DATE FIN
           if(updateForm.querySelector('#date-end-update').value != '' &&
             item.dateFin != 
-             updateForm.querySelector('#date-end-update').value){
-               
-               var date2 = new Date(updateForm.querySelector('#date-end-update').value);
-               
-               this.$store.dispatch('updateAffiliation_action',
-               {
-                 field: 'dateFin',
-                 index: i,
-                 value: date2.toISOString().split('T')[0]
-               }); 
-               
+             updateForm.querySelector('#date-end-update').value){     
+              var date2 = new Date(updateForm.querySelector('#date-end-update').value);
+          
+              payload.dateFin = date2.toISOString().split('T')[0]; 
              }
 
           if(new Date(item.dateDebut).getTime()
               >= new Date(item.dateFin).getTime()){
               
-              this.$store.dispatch('updateAffiliation_action',
-               {
-                 field: 'dateDebut',
-                 index: i,
-                 value: ''
-               }); 
-              this.$store.dispatch('updateAffiliation_action',
-               {
-                 field: 'dateFin',
-                 index: i,
-                 value: ''
-               });
+              payload.dateDebut = null;
+              payload.dateFin = null;
 
               this.$buefy.notification.open({
               duration: 3000,
@@ -1146,14 +1118,17 @@ export default {
               hasIcon: true
             })
           }
+        
+        this.$store.dispatch('updateAffiliation_action',payload);
+        
         updateForm.classList.add("to-hide-aff-item");
 
-        updateForm.querySelector('#organisation-field-update')[value1].value = '';
+        
         //updateForm.querySelector('#team-field-update').value = '';
-        updateForm.querySelector('#country-update')[value2].value = '';
+        
         //updateForm.querySelector('#date-beginning-update').value = '';
         //updateForm.querySelector('#date-end-update').value ='';
-
+        
         
       }
     },
