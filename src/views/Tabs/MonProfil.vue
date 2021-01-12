@@ -820,14 +820,13 @@ export default {
               newAffItem.affiliation.dateDebut = date1.toISOString().split('T')[0];
             }
 
-
-            if(newAffItem.affiliation.dateDebut != null ){
+            if(newAffItem.affiliation.dateDebut != null){
               if(this.newAffiliation.dateFin != ''){
                  var date2 = new Date(this.newAffiliation.dateFin);
-                 if(newAffItem.affiliation.dateDebut.getTime >= date2.getTime){
+                 if(newAffItem.affiliation.dateDebut >= date2.toISOString().split('T')[0]){
                    this.$buefy.notification.open({
                     duration: 3000,
-                    message: 'Beginning date can\'t be beyond ending date',
+                    message: 'Beginning date can\'t be beyond ending date. Update or delete this affiliation',
                     position: 'is-bottom',
                     type: 'is-light',
                     hasIcon: true
@@ -839,22 +838,22 @@ export default {
             } else {
               this.$buefy.notification.open({
                   duration: 3000,
-                  message: 'Can\'t have an ending date without a beginning date',
+                  message: 'Can\'t have an ending date without a beginning date. No date has been set',
                   position: 'is-bottom',
                   type: 'is-light',
                   hasIcon: true
                 })
             }
 
-                this.$store.dispatch('addAffiliation_action',newAffItem);
+            this.$store.dispatch('addAffiliation_action',newAffItem);
 
-                this.newAffiliation = {
-                  organisation: '',
-                  equipe: '',
-                  dateDebut: '',
-                  dateFin: '',
-                  pays: ''
-                }
+            this.newAffiliation = {
+              organisation: '',
+              equipe: '',
+              dateDebut: '',
+              dateFin: '',
+              pays: ''
+            }
 
         } else {
         this.$buefy.notification.open({
