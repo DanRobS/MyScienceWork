@@ -1095,15 +1095,16 @@ export default {
                updateForm.querySelector('#date-beginning-update').value = '';
              } else {
                payload.dateDebut = null;
-               payload.dateFin = null;
              }
 
           //UPDATING DATE FIN
-          if(updateForm.querySelector('#date-end-update').value != ''){     
+          if(updateForm.querySelector('#date-end-update').value != '' && payload.dateDebut!=null){     
               var date2 = new Date(updateForm.querySelector('#date-end-update').value);
           
               payload.dateFin = date2.toISOString().split('T')[0]; 
               updateForm.querySelector('#date-end-update').value ='';
+             } else {
+               payload.dateFin = null;
              }
 
           if(payload.dateFin != null && payload.dateFin != ''){
