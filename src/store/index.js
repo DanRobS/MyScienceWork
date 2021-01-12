@@ -186,7 +186,6 @@ export default new Vuex.Store({
       axios.post(this.state.URI_updateAffiliation, payload)
         .then(response => {
           console.log(response.data.message);
-          console.log(payload);
           context.commit('updateAffiliation', payload);
         })
         .catch(err => {

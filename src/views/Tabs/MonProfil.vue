@@ -1077,6 +1077,8 @@ export default {
              updateForm.querySelector('#team-field-update').value){
                payload.equipe = updateForm.querySelector('#team-field-update').value;
                updateForm.querySelector('#team-field-update').value = '';
+             } else {
+               payload.equipe = '';
              }
 
           //UPDATING PAYS
