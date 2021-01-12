@@ -1035,9 +1035,9 @@ export default {
         index: i,
         aff_to_update: item,
         organisation: item.organisation,
-        equipe: '',
-        dateDebut: null,
-        dateFin: null,
+        equipe: item.equipe,
+        dateDebut: item.dateDebut,
+        dateFin: item.dateFin,
         pays: item.pays
       }
 
@@ -1076,6 +1076,7 @@ export default {
             item.equipe != 
              updateForm.querySelector('#team-field-update').value){
                payload.equipe = updateForm.querySelector('#team-field-update').value;
+               updateForm.querySelector('#team-field-update').value = '';
              }
 
           //UPDATING PAYS
@@ -1093,6 +1094,10 @@ export default {
                var date1 = new Date(updateForm.querySelector('#date-beginning-update').value);
                
                payload.dateDebut = date1.toISOString().split('T')[0];
+               updateForm.querySelector('#date-beginning-update').value = '';
+             } else {
+               payload.dateDebut = null;
+               payload.dateFin = null;
              }
 
           //UPDATING DATE FIN
@@ -1102,6 +1107,7 @@ export default {
               var date2 = new Date(updateForm.querySelector('#date-end-update').value);
           
               payload.dateFin = date2.toISOString().split('T')[0]; 
+              updateForm.querySelector('#date-end-update').value ='';
              }
 
           if(new Date(item.dateDebut).getTime()
@@ -1124,10 +1130,10 @@ export default {
         updateForm.classList.add("to-hide-aff-item");
 
         
-        //updateForm.querySelector('#team-field-update').value = '';
         
-        //updateForm.querySelector('#date-beginning-update').value = '';
-        //updateForm.querySelector('#date-end-update').value ='';
+        
+        
+        //
         
         
       }
