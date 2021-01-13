@@ -10,6 +10,8 @@ export default new Vuex.Store({
   state: {
     URI_getUser: 'http://localhost:8081/getUser/',
     URI_getUserById: 'http://localhost:8081/getUserById/',
+    URI_getPublication: 'http://localhost:8081/getPublicationsByUser/',
+    URI_getPublicationById: 'http://localhost:8081/getPublicationById/',
     URI_updateUserInfos: 'http://localhost:8081/updateUserInfos/',
     URI_updateSocialMedia: 'http://localhost:8081/updateSocialMedia',
     URI_removeSocialMedia: 'http://localhost:8081/removeSocialMedia',
@@ -38,27 +40,7 @@ export default new Vuex.Store({
           pays: 'France',
         }
       ],
-      publications: [
-        {
-          titre: 'Radioactive materials and their effects to health',
-          auteurs: [
-            'Hugh Généreux',
-            'Frank Martin'
-          ],
-          annee: '2016',
-          langue: 'ENG'
-        },
-        {
-          titre: 'La fission nucléaire expliquée par l\'exemple',
-          auteurs: [
-            'Hugh Généreux',
-            'Frank Martin',
-            'Selena Smith'
-          ],
-          annee: '2016',
-          langue: 'FR'
-        }
-      ]
+      publications: []
     }
   },
   
@@ -134,10 +116,33 @@ export default new Vuex.Store({
         orcid: payload.orcid
       }
       state.user.affiliations = payload.affiliations;
+    },
+
+    findPublications(state, payload) {
+      state.user.publications.push({
+        auteurs: payload.auteurs,
+        titre: payload.titre,
+        annee: payload.annee,
+        langue: payload.langue
+      });
     }
+
   },
   
   actions: {
+
+    findPublications_action (context, payload)  {
+
+      axios.get(this.state.URI_getPublicationById+''+payload.id)
+        .then(response => {
+
+          context.commit('findPublications', response.data._source);
+        })
+        .catch(err => {
+          console.error(err);
+        })
+    },
+
     addSocialMedia_action (context, payload) {
       axios.post(this.state.URI_updateSocialMedia, payload)
       .then(response => {
