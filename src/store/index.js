@@ -116,6 +116,7 @@ export default new Vuex.Store({
         orcid: payload.orcid
       }
       state.user.affiliations = payload.affiliations;
+      state.user.publications = [];
     },
 
     findPublications(state, payload) {
