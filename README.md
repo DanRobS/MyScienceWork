@@ -9,3 +9,4 @@
 
 * La barre de recherche tout en haut permet la recherche d'un chercheur.
 * Il est possible de chercher les publications par leur titre
+* Pour supprimer un id de réseau social, sélectionner le réseau via le menu déroulant, puis cliquer sur le bouton **- (moins)**
