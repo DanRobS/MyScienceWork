@@ -1,5 +1,7 @@
 # MyScienceWork - VueJS Front-End
 
+Node Version : 14.15.4
+
 ##### Installation
 * Cloner le repo
 * Exécuter ```npm install``` pour installer les dépendances
