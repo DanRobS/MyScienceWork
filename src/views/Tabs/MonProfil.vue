@@ -92,8 +92,12 @@
         <b-select id="organisation-field"
                   v-model="newAffiliation.organisation">
           <option disabled value="">Select an organisation</option>
-          <option value="Option 1">Option 1</option>
-          <option value="Option 2">Option 2</option>
+          <option value="LabCorp">LabCorp</option>
+          <option value="Quest Diagnostics">Quest Diagnostics</option>
+          <option value="Abbott Laboratories">Abbott Laboratories</option>
+          <option value="Clarient">Clarient</option>
+          <option value="Spectra Laboratories">Spectra Laboratories</option>
+          <option value="Research Lab Of Exposing Pyrology">Research Lab Of Exposing Pyrology</option>
         </b-select>       
       </b-field>
 
@@ -417,8 +421,12 @@
               <b-field label="Organisation">
                 <b-select id="organisation-field-update">
                   <option disabled value="">Select an organisation</option>
-                  <option value="Option 1">Option 1</option>
-                  <option value="Option 2">Option 2</option>
+                  <option value="LabCorp">LabCorp</option>
+                  <option value="Quest Diagnostics">Quest Diagnostics</option>
+                  <option value="Abbott Laboratories">Abbott Laboratories</option>
+                  <option value="Clarient">Clarient</option>
+                  <option value="Spectra Laboratories">Spectra Laboratories</option>
+                  <option value="Research Lab Of Exposing Pyrology">Research Lab Of Exposing Pyrology</option>
                 </b-select>       
               </b-field>
 
