@@ -1,4 +1,4 @@
-# my-science-work - front-end
+# MyScienceWork - VueJS Front-End
 
 ##### Installation
 * Cloner le repo
